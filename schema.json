@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Canopy Platform Registry",
+  "description": "Defines supported MCP client platforms and their configuration format for canopy setup wizard.",
+  "type": "object",
+  "required": ["version", "platforms"],
+  "properties": {
+    "version": { "type": "integer" },
+    "platforms": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "config_path", "servers_key", "canopy_entry"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Platform display name"
+          },
+          "config_path": {
+            "type": "string",
+            "description": "Path to MCP config file relative to $HOME"
+          },
+          "servers_key": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "JSON key path to the MCP servers object where canopy entry is added"
+          },
+          "canopy_entry": {
+            "type": "object",
+            "description": "The canopy MCP server entry value in the platform's expected format"
+          },
+          "deprecated_keys": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Old MCP server keys to remove during setup (e.g. task-trigger)"
+          }
+        }
+      }
+    }
+  }
+}
