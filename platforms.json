@@ -1,0 +1,40 @@
+{
+  "$schema": "https://raw.githubusercontent.com/UniverLab/canopy-registry/main/schema.json",
+  "version": 1,
+  "platforms": [
+    {
+      "name": "kiro",
+      "config_path": ".kiro/settings/mcp.json",
+      "servers_key": ["mcpServers", "canopy"],
+      "canopy_entry": {
+        "url": "http://localhost:7755/mcp",
+        "disabled": false,
+        "autoApprove": []
+      },
+      "deprecated_keys": ["task-trigger"]
+    },
+    {
+      "name": "opencode",
+      "config_path": ".config/opencode/opencode.jsonc",
+      "servers_key": ["mcp", "canopy"],
+      "canopy_entry": {
+        "type": "remote",
+        "url": "http://localhost:7755/mcp",
+        "enabled": true
+      },
+      "deprecated_keys": ["task-trigger"]
+    },
+    {
+      "name": "copilot",
+      "config_path": ".copilot/mcp-config.json",
+      "servers_key": ["mcpServers", "canopy"],
+      "canopy_entry": {
+        "type": "http",
+        "url": "http://localhost:7755/mcp",
+        "headers": {},
+        "tools": ["*"]
+      },
+      "deprecated_keys": ["task-trigger"]
+    }
+  ]
+}
