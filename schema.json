@@ -10,7 +10,7 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["name", "config_path", "servers_key", "canopy_entry"],
+        "required": ["name", "config_path", "mcp_servers_key", "canopy_entry_key", "canopy_entry"],
         "properties": {
           "name": {
             "type": "string",
@@ -20,10 +20,14 @@
             "type": "string",
             "description": "Path to MCP config file relative to $HOME"
           },
-          "servers_key": {
+          "mcp_servers_key": {
             "type": "array",
             "items": { "type": "string" },
-            "description": "JSON key path to the MCP servers object where canopy entry is added"
+            "description": "JSON key path to the MCP servers object (e.g., ['mcpServers'])"
+          },
+          "canopy_entry_key": {
+            "type": "string",
+            "description": "Key name for the canopy entry within the MCP servers object (e.g., 'canopy')"
           },
           "canopy_entry": {
             "type": "object",
@@ -33,6 +37,38 @@
             "type": "array",
             "items": { "type": "string" },
             "description": "Old MCP server keys to remove during setup (e.g. task-trigger)"
+          },
+          "cli": {
+            "type": "object",
+            "description": "CLI strategy definition for headless execution",
+            "required": ["binary", "headless_mode"],
+            "properties": {
+              "binary": {
+                "type": "string",
+                "description": "Binary name in PATH"
+              },
+              "headless_mode": {
+                "type": "string",
+                "description": "Command flags to run in headless mode (before prompt)"
+              },
+              "model_flag": {
+                "type": "string",
+                "description": "Flag to specify model (e.g., --model, -m)"
+              },
+              "supports_working_dir": {
+                "type": "boolean",
+                "description": "Whether this CLI supports working directory flag"
+              },
+              "working_dir_flag": {
+                "type": "string",
+                "description": "Flag to set working directory (e.g., --dir, --cwd)"
+              },
+              "env_vars": {
+                "type": "object",
+                "description": "Environment variables to set when running this CLI",
+                "additionalProperties": { "type": "string" }
+              }
+            }
           }
         }
       }
