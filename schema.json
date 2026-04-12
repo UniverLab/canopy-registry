@@ -51,6 +51,10 @@
                 "type": "string",
                 "description": "Command flags to run in headless mode (before prompt)"
               },
+              "interactive_args": {
+                "type": "string",
+                "description": "Arguments to pass when launching in interactive (TUI) mode (e.g., --tui, -c)"
+              },
               "model_flag": {
                 "type": "string",
                 "description": "Flag to specify model (e.g., --model, -m)"
