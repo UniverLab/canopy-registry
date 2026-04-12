@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/UniverLab/canopy-registry/main/schema.json",
-  "version": 3,
+  "version": 4,
   "platforms": [
     {
       "name": "kiro",
@@ -16,6 +16,7 @@
       "cli": {
         "binary": "kiro-cli",
         "headless_mode": "chat --no-interactive --trust-all-tools",
+        "interactive_args": "--tui",
         "model_flag": "--model",
         "supports_working_dir": false,
         "env_vars": {}
@@ -35,6 +36,7 @@
       "cli": {
         "binary": "opencode",
         "headless_mode": "run",
+        "interactive_args": "",
         "model_flag": "-m",
         "supports_working_dir": true,
         "working_dir_flag": "--dir",
@@ -56,6 +58,7 @@
       "cli": {
         "binary": "copilot",
         "headless_mode": "-p",
+        "interactive_args": "",
         "model_flag": "--model",
         "supports_working_dir": false,
         "env_vars": {}
@@ -76,6 +79,7 @@
       "cli": {
         "binary": "qwen",
         "headless_mode": "--print",
+        "interactive_args": "",
         "model_flag": "--model",
         "supports_working_dir": true,
         "working_dir_flag": "--cwd",
