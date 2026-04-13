@@ -64,7 +64,7 @@
         "model_flag": "--model",
         "supports_working_dir": false,
         "env_vars": {},
-        "accent_color": [34, 129, 233]
+        "accent_color": [170, 0, 170]
       }
     },
     {
