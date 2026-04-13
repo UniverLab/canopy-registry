@@ -71,6 +71,13 @@
                 "type": "object",
                 "description": "Environment variables to set when running this CLI",
                 "additionalProperties": { "type": "string" }
+              },
+              "accent_color": {
+                "type": "array",
+                "items": { "type": "integer", "minimum": 0, "maximum": 255 },
+                "minItems": 3,
+                "maxItems": 3,
+                "description": "RGB accent color for this CLI's agents in the TUI (e.g., [139, 92, 246])"
               }
             }
           }

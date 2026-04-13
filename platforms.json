@@ -19,7 +19,8 @@
         "interactive_args": "--tui",
         "model_flag": "--model",
         "supports_working_dir": false,
-        "env_vars": {}
+        "env_vars": {},
+        "accent_color": [175, 135, 255]
       }
     },
     {
@@ -40,7 +41,8 @@
         "model_flag": "-m",
         "supports_working_dir": true,
         "working_dir_flag": "--dir",
-        "env_vars": {}
+        "env_vars": {},
+        "accent_color": [92, 156, 245]
       }
     },
     {
@@ -61,7 +63,8 @@
         "interactive_args": "",
         "model_flag": "--model",
         "supports_working_dir": false,
-        "env_vars": {}
+        "env_vars": {},
+        "accent_color": [34, 129, 233]
       }
     },
     {
@@ -83,7 +86,8 @@
         "model_flag": "--model",
         "supports_working_dir": true,
         "working_dir_flag": "--cwd",
-        "env_vars": {}
+        "env_vars": {},
+        "accent_color": [206, 168, 244]
       }
     }
   ]
