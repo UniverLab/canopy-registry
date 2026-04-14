@@ -149,9 +149,9 @@
         "working_dir_flag": "--cwd",
         "env_vars": {},
         "accent_color": [
-          66,
-          133,
-          244
+          192,
+          158,
+          228
         ]
       }
     },
@@ -213,6 +213,37 @@
           87,
           199,
           195
+        ]
+      }
+    },
+    {
+      "name": "mistral",
+      "config_path": ".vibe/config.json",
+      "mcp_servers_key": [
+        "mcpServers"
+      ],
+      "canopy_entry_key": "canopy",
+      "canopy_entry": {
+        "type": "http",
+        "url": "http://localhost:7755/mcp",
+        "headers": {},
+        "tools": [
+          "*"
+        ]
+      },
+      "deprecated_keys": [],
+      "cli": {
+        "binary": "vibe",
+        "headless_mode": "-p",
+        "interactive_args": "--tui",
+        "model_flag": "--agent",
+        "supports_working_dir": true,
+        "working_dir_flag": "--workdir",
+        "env_vars": {},
+        "accent_color": [
+          251,
+          133,
+          1
         ]
       }
     }
