@@ -89,6 +89,29 @@
         "env_vars": {},
         "accent_color": [206, 168, 244]
       }
+    },
+    {
+      "name": "gemini",
+      "config_path": ".gemini/settings.json",
+      "mcp_servers_key": ["mcpServers"],
+      "canopy_entry_key": "canopy",
+      "canopy_entry": {
+        "type": "http",
+        "url": "http://localhost:7755/mcp",
+        "headers": {},
+        "tools": ["*"]
+      },
+      "deprecated_keys": [],
+      "cli": {
+        "binary": "gemini",
+        "headless_mode": "--print",
+        "interactive_args": "",
+        "model_flag": "--model",
+        "supports_working_dir": true,
+        "working_dir_flag": "--cwd",
+        "env_vars": {},
+        "accent_color": [66, 133, 244]
+      }
     }
   ]
 }
