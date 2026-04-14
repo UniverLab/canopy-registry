@@ -5,14 +5,18 @@
     {
       "name": "kiro",
       "config_path": ".kiro/settings/mcp.json",
-      "mcp_servers_key": ["mcpServers"],
+      "mcp_servers_key": [
+        "mcpServers"
+      ],
       "canopy_entry_key": "canopy",
       "canopy_entry": {
         "url": "http://localhost:7755/mcp",
         "disabled": false,
         "autoApprove": []
       },
-      "deprecated_keys": ["task-trigger"],
+      "deprecated_keys": [
+        "task-trigger"
+      ],
       "cli": {
         "binary": "kiro-cli",
         "headless_mode": "chat --no-interactive --trust-all-tools",
@@ -20,20 +24,28 @@
         "model_flag": "--model",
         "supports_working_dir": false,
         "env_vars": {},
-        "accent_color": [175, 135, 255]
+        "accent_color": [
+          175,
+          135,
+          255
+        ]
       }
     },
     {
       "name": "opencode",
       "config_path": ".config/opencode/opencode.jsonc",
-      "mcp_servers_key": ["mcp"],
+      "mcp_servers_key": [
+        "mcp"
+      ],
       "canopy_entry_key": "canopy",
       "canopy_entry": {
         "type": "remote",
         "url": "http://localhost:7755/mcp",
         "enabled": true
       },
-      "deprecated_keys": ["task-trigger"],
+      "deprecated_keys": [
+        "task-trigger"
+      ],
       "cli": {
         "binary": "opencode",
         "headless_mode": "run",
@@ -42,21 +54,31 @@
         "supports_working_dir": true,
         "working_dir_flag": "--dir",
         "env_vars": {},
-        "accent_color": [92, 156, 245]
+        "accent_color": [
+          92,
+          156,
+          245
+        ]
       }
     },
     {
       "name": "copilot",
       "config_path": ".copilot/mcp-config.json",
-      "mcp_servers_key": ["mcpServers"],
+      "mcp_servers_key": [
+        "mcpServers"
+      ],
       "canopy_entry_key": "canopy",
       "canopy_entry": {
         "type": "http",
         "url": "http://localhost:7755/mcp",
         "headers": {},
-        "tools": ["*"]
+        "tools": [
+          "*"
+        ]
       },
-      "deprecated_keys": ["task-trigger"],
+      "deprecated_keys": [
+        "task-trigger"
+      ],
       "cli": {
         "binary": "copilot",
         "headless_mode": "-p",
@@ -64,19 +86,27 @@
         "model_flag": "--model",
         "supports_working_dir": false,
         "env_vars": {},
-        "accent_color": [170, 0, 170]
+        "accent_color": [
+          170,
+          0,
+          170
+        ]
       }
     },
     {
       "name": "qwen",
       "config_path": ".qwen/settings.json",
-      "mcp_servers_key": ["mcpServers"],
+      "mcp_servers_key": [
+        "mcpServers"
+      ],
       "canopy_entry_key": "canopy",
       "canopy_entry": {
         "type": "http",
         "url": "http://localhost:7755/mcp",
         "headers": {},
-        "tools": ["*"]
+        "tools": [
+          "*"
+        ]
       },
       "deprecated_keys": [],
       "cli": {
@@ -87,19 +117,27 @@
         "supports_working_dir": true,
         "working_dir_flag": "--cwd",
         "env_vars": {},
-        "accent_color": [206, 168, 244]
+        "accent_color": [
+          206,
+          168,
+          244
+        ]
       }
     },
     {
       "name": "gemini",
       "config_path": ".gemini/settings.json",
-      "mcp_servers_key": ["mcpServers"],
+      "mcp_servers_key": [
+        "mcpServers"
+      ],
       "canopy_entry_key": "canopy",
       "canopy_entry": {
         "type": "http",
         "url": "http://localhost:7755/mcp",
         "headers": {},
-        "tools": ["*"]
+        "tools": [
+          "*"
+        ]
       },
       "deprecated_keys": [],
       "cli": {
@@ -110,7 +148,72 @@
         "supports_working_dir": true,
         "working_dir_flag": "--cwd",
         "env_vars": {},
-        "accent_color": [66, 133, 244]
+        "accent_color": [
+          66,
+          133,
+          244
+        ]
+      }
+    },
+    {
+      "name": "claude",
+      "config_path": ".claude/settings.json",
+      "mcp_servers_key": [
+        "mcpServers"
+      ],
+      "canopy_entry_key": "canopy",
+      "canopy_entry": {
+        "type": "http",
+        "url": "http://localhost:7755/mcp",
+        "headers": {},
+        "tools": [
+          "*"
+        ]
+      },
+      "deprecated_keys": [],
+      "cli": {
+        "binary": "claude",
+        "headless_mode": "-p",
+        "interactive_args": "",
+        "resume_args": "--continue",
+        "resume_picker_args": "--resume",
+        "model_flag": "--model",
+        "supports_working_dir": false,
+        "env_vars": {},
+        "accent_color": [
+          217,
+          119,
+          87
+        ]
+      }
+    },
+    {
+      "name": "codex",
+      "config_path": ".codex/config.toml",
+      "config_format": "toml",
+      "mcp_servers_key": [
+        "mcp_servers"
+      ],
+      "canopy_entry_key": "canopy",
+      "canopy_entry": {
+        "url": "http://localhost:7755/mcp"
+      },
+      "deprecated_keys": [],
+      "cli": {
+        "binary": "codex",
+        "headless_mode": "exec",
+        "interactive_args": "",
+        "resume_args": "resume --last",
+        "resume_picker_args": "resume",
+        "model_flag": "-m",
+        "supports_working_dir": true,
+        "working_dir_flag": "-C",
+        "env_vars": {},
+        "accent_color": [
+          87,
+          199,
+          195
+        ]
       }
     }
   ]
