@@ -162,7 +162,7 @@
           158,
           228
         ],
-        "resume_args": "--resume latest"
+        "resume_args": "--resume"
       }
     },
     {
@@ -189,8 +189,7 @@
         "binary": "claude",
         "headless_mode": "-p",
         "interactive_args": "",
-        "resume_args": "--continue",
-        "resume_picker_args": "--resume",
+        "resume_args": "--resume",
         "model_flag": "--model",
         "supports_working_dir": false,
         "env_vars": {},
@@ -217,8 +216,7 @@
         "binary": "codex",
         "headless_mode": "exec",
         "interactive_args": "",
-        "resume_args": "resume --last",
-        "resume_picker_args": "--resume",
+        "resume_args": "resume",
         "model_flag": "-m",
         "supports_working_dir": true,
         "working_dir_flag": "-C",
