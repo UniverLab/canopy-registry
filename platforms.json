@@ -20,7 +20,7 @@
       "cli": {
         "binary": "kiro-cli",
         "headless_mode": "chat --no-interactive --trust-all-tools",
-        "interactive_args": "--tui",
+        "interactive_args": "",
         "model_flag": "--model",
         "supports_working_dir": false,
         "env_vars": {},
@@ -60,7 +60,9 @@
           156,
           245
         ],
-        "resume_args": "-c"
+        "resume_args": "-c",
+        "session_list_cmd": "session list",
+        "session_resume_cmd": "--session"
       }
     },
     {
