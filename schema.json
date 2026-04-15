@@ -38,6 +38,11 @@
             "items": { "type": "string" },
             "description": "Old MCP server keys to remove during setup (e.g. task-trigger)"
           },
+          "unsupported_keys": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "MCP server config keys that this platform does not support (used to sanitize configs during sync)"
+          },
           "cli": {
             "type": "object",
             "description": "CLI strategy definition for headless execution",
