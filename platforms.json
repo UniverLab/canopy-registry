@@ -28,7 +28,8 @@
           175,
           135,
           255
-        ]
+        ],
+        "resume_args": "chat --resume-picker"
       }
     },
     {
@@ -58,7 +59,8 @@
           92,
           156,
           245
-        ]
+        ],
+        "resume_args": "-c"
       }
     },
     {
@@ -90,7 +92,8 @@
           170,
           0,
           170
-        ]
+        ],
+        "resume_args": "--continue"
       }
     },
     {
@@ -121,7 +124,8 @@
           206,
           168,
           244
-        ]
+        ],
+        "resume_args": "-c"
       }
     },
     {
@@ -140,6 +144,11 @@
         ]
       },
       "deprecated_keys": [],
+      "unsupported_keys": [
+        "autoApprove",
+        "disabled",
+        "tools"
+      ],
       "cli": {
         "binary": "gemini",
         "headless_mode": "--print",
@@ -152,7 +161,8 @@
           192,
           158,
           228
-        ]
+        ],
+        "resume_args": "--resume latest"
       }
     },
     {
@@ -171,6 +181,10 @@
         ]
       },
       "deprecated_keys": [],
+      "unsupported_keys": [
+        "autoApprove",
+        "disabled"
+      ],
       "cli": {
         "binary": "claude",
         "headless_mode": "-p",
@@ -204,7 +218,7 @@
         "headless_mode": "exec",
         "interactive_args": "",
         "resume_args": "resume --last",
-        "resume_picker_args": "resume",
+        "resume_picker_args": "--resume",
         "model_flag": "-m",
         "supports_working_dir": true,
         "working_dir_flag": "-C",
@@ -244,7 +258,8 @@
           251,
           133,
           1
-        ]
+        ],
+        "resume_args": "-c"
       }
     }
   ]
