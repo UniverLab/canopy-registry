@@ -73,7 +73,7 @@
       ],
       "canopy_entry_key": "canopy",
       "canopy_entry": {
-        "type": "http",
+        "type": "sse",
         "url": "http://localhost:7755/mcp",
         "headers": {},
         "tools": [
@@ -106,7 +106,7 @@
       ],
       "canopy_entry_key": "canopy",
       "canopy_entry": {
-        "type": "http",
+        "type": "sse",
         "url": "http://localhost:7755/mcp",
         "headers": {},
         "tools": [
@@ -138,7 +138,7 @@
       ],
       "canopy_entry_key": "canopy",
       "canopy_entry": {
-        "type": "http",
+        "type": "sse",
         "url": "http://localhost:7755/mcp",
         "headers": {},
         "tools": [
@@ -175,7 +175,7 @@
       ],
       "canopy_entry_key": "canopy",
       "canopy_entry": {
-        "type": "http",
+        "type": "sse",
         "url": "http://localhost:7755/mcp",
         "headers": {},
         "tools": [
@@ -238,7 +238,7 @@
       ],
       "canopy_entry_key": "canopy",
       "canopy_entry": {
-        "type": "http",
+        "type": "sse",
         "url": "http://localhost:7755/mcp",
         "headers": {},
         "tools": [
