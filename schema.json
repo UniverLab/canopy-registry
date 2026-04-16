@@ -1,114 +1,153 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Canopy Platform Registry",
-  "description": "Defines supported MCP client platforms and their configuration format for canopy setup wizard.",
-  "type": "object",
-  "required": ["version", "platforms"],
-  "properties": {
-    "version": { "type": "integer" },
-    "platforms": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "required": ["name", "config_path", "mcp_servers_key", "canopy_entry_key", "canopy_entry"],
-        "properties": {
-          "name": {
-            "type": "string",
-            "description": "Platform display name"
-          },
-          "config_path": {
-            "type": "string",
-            "description": "Path to MCP config file relative to $HOME"
-          },
-          "config_format": {
-            "type": "string",
-            "enum": ["json", "toml"],
-            "description": "Config file format. Defaults to JSON when omitted. Use 'toml' for platforms like Codex."
-          },
-          "mcp_servers_key": {
-            "type": "array",
-            "items": { "type": "string" },
-            "description": "JSON/TOML key path to the MCP servers object (e.g., ['mcpServers'])"
-          },
-          "canopy_entry_key": {
-            "type": "string",
-            "description": "Key name for the canopy entry within the MCP servers object (e.g., 'canopy')"
-          },
-          "canopy_entry": {
+  "description": "Defines supported MCP client platforms and their configuration format for canopy setup wizard. Version 5+ uses per-platform files under platforms/ with an index.json.",
+  "definitions": {
+    "platform": {
+      "type": "object",
+      "required": ["name", "config_path", "mcp_servers_key", "canopy_entry_key", "canopy_entry"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Platform display name"
+        },
+        "config_path": {
+          "type": "string",
+          "description": "Path to MCP config file relative to $HOME"
+        },
+        "config_format": {
+          "type": "string",
+          "enum": ["json", "toml"],
+          "description": "Config file format. Defaults to JSON when omitted. Use 'toml' for platforms like Codex."
+        },
+        "mcp_servers_key": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "JSON/TOML key path to the MCP servers object (e.g., ['mcpServers'])"
+        },
+        "canopy_entry_key": {
+          "type": "string",
+          "description": "Key name for the canopy entry within the MCP servers object (e.g., 'canopy')"
+        },
+        "canopy_entry": {
+          "type": "object",
+          "description": "The canopy MCP server entry value in the platform's expected format"
+        },
+        "deprecated_keys": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Old MCP server keys to remove during setup (e.g. task-trigger)"
+        },
+        "unsupported_keys": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "MCP server config keys that this platform does not support (used to sanitize configs during sync)"
+        },
+        "recommended_servers": {
+          "type": "object",
+          "description": "MCP servers that canopy always installs alongside its own entry. Keys are server names, values are their config. Supports {filesystem_dir} and {home} placeholders.",
+          "additionalProperties": {
             "type": "object",
-            "description": "The canopy MCP server entry value in the platform's expected format"
-          },
-          "deprecated_keys": {
-            "type": "array",
-            "items": { "type": "string" },
-            "description": "Old MCP server keys to remove during setup (e.g. task-trigger)"
-          },
-          "unsupported_keys": {
-            "type": "array",
-            "items": { "type": "string" },
-            "description": "MCP server config keys that this platform does not support (used to sanitize configs during sync)"
-          },
-          "cli": {
-            "type": "object",
-            "description": "CLI strategy definition for headless execution",
-            "required": ["binary", "headless_mode"],
-            "properties": {
-              "binary": {
-                "type": "string",
-                "description": "Binary name in PATH"
-              },
-              "headless_mode": {
-                "type": "string",
-                "description": "Command flags to run in headless mode (before prompt)"
-              },
-              "interactive_args": {
-                "type": "string",
-                "description": "Arguments to pass when launching in interactive (TUI) mode (e.g., --tui, -c)"
-              },
-              "fallback_interactive_args": {
-                "type": "string",
-                "description": "Fallback arguments if the primary interactive mode fails to start"
-              },
-              "resume_args": {
-                "type": "string",
-                "description": "Arguments to resume the most recent session (e.g., --continue, --resume)"
-              },
-              "session_list_cmd": {
-                "type": "string",
-                "description": "Subcommand to list sessions (e.g., 'session list'). Enables canopy-side session picker."
-              },
-              "session_resume_cmd": {
-                "type": "string",
-                "description": "Flag to resume a specific session by ID (e.g., '--session'). The session ID is appended as the next argument."
-              },
-              "model_flag": {
-                "type": "string",
-                "description": "Flag to specify model (e.g., --model, -m)"
-              },
-              "supports_working_dir": {
-                "type": "boolean",
-                "description": "Whether this CLI supports working directory flag"
-              },
-              "working_dir_flag": {
-                "type": "string",
-                "description": "Flag to set working directory (e.g., --dir, --cwd)"
-              },
-              "env_vars": {
-                "type": "object",
-                "description": "Environment variables to set when running this CLI",
-                "additionalProperties": { "type": "string" }
-              },
-              "accent_color": {
-                "type": "array",
-                "items": { "type": "integer", "minimum": 0, "maximum": 255 },
-                "minItems": 3,
-                "maxItems": 3,
-                "description": "RGB accent color for this CLI's agents in the TUI (e.g., [139, 92, 246])"
-              }
+            "description": "MCP server config in the platform's expected format"
+          }
+        },
+        "cli": {
+          "type": "object",
+          "description": "CLI strategy definition for headless execution",
+          "required": ["binary", "headless_mode"],
+          "properties": {
+            "binary": {
+              "type": "string",
+              "description": "Binary name in PATH"
+            },
+            "headless_mode": {
+              "type": "string",
+              "description": "Command flags to run in headless mode (before prompt)"
+            },
+            "interactive_args": {
+              "type": "string",
+              "description": "Arguments to pass when launching in interactive (TUI) mode (e.g., --tui, -c)"
+            },
+            "fallback_interactive_args": {
+              "type": "string",
+              "description": "Fallback arguments if the primary interactive mode fails to start"
+            },
+            "resume_args": {
+              "type": "string",
+              "description": "Arguments to resume the most recent session (e.g., --continue, --resume)"
+            },
+            "session_list_cmd": {
+              "type": "string",
+              "description": "Subcommand to list sessions (e.g., 'session list'). Enables canopy-side session picker."
+            },
+            "session_resume_cmd": {
+              "type": "string",
+              "description": "Flag to resume a specific session by ID (e.g., '--session'). The session ID is appended as the next argument."
+            },
+            "model_flag": {
+              "type": "string",
+              "description": "Flag to specify model (e.g., --model, -m)"
+            },
+            "supports_working_dir": {
+              "type": "boolean",
+              "description": "Whether this CLI supports working directory flag"
+            },
+            "working_dir_flag": {
+              "type": "string",
+              "description": "Flag to set working directory (e.g., --dir, --cwd)"
+            },
+            "env_vars": {
+              "type": "object",
+              "description": "Environment variables to set when running this CLI",
+              "additionalProperties": { "type": "string" }
+            },
+            "accent_color": {
+              "type": "array",
+              "items": { "type": "integer", "minimum": 0, "maximum": 255 },
+              "minItems": 3,
+              "maxItems": 3,
+              "description": "RGB accent color for this CLI's agents in the TUI (e.g., [139, 92, 246])"
             }
           }
         }
       }
     }
-  }
+  },
+  "oneOf": [
+    {
+      "description": "Index file (index.json) — lightweight list of platform names and binaries",
+      "type": "object",
+      "required": ["version", "platforms"],
+      "properties": {
+        "version": { "type": "integer", "minimum": 5 },
+        "platforms": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "binary"],
+            "properties": {
+              "name": { "type": "string" },
+              "binary": { "type": "string", "description": "CLI binary name for detection via PATH" }
+            }
+          }
+        }
+      }
+    },
+    {
+      "description": "Per-platform file (platforms/{name}.json) — full platform configuration",
+      "$ref": "#/definitions/platform"
+    },
+    {
+      "description": "Legacy monolithic file (platforms.json v4) — all platforms in one file",
+      "type": "object",
+      "required": ["version", "platforms"],
+      "properties": {
+        "version": { "type": "integer" },
+        "platforms": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/platform" }
+        }
+      }
+    }
+  ]
 }

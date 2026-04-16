@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/UniverLab/canopy-registry/main/schema.json",
-  "version": 4,
+  "version": 5,
   "platforms": [
     {
       "name": "kiro",
@@ -47,6 +47,7 @@
       "deprecated_keys": [
         "task-trigger"
       ],
+      "unsupported_keys": ["autoApprove", "disabled", "tools", "headers"],
       "cli": {
         "binary": "opencode",
         "headless_mode": "run",
