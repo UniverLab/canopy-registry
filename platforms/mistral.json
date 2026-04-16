@@ -3,10 +3,10 @@
   "config_path": ".vibe/config.toml",
   "config_format": "toml",
   "toml_array_format": true,
-  "mcp_servers_key": ["mcp_servers"],
+  "mcp_servers_key": ["tools", "mcp_servers"],
   "canopy_entry_key": "canopy",
   "canopy_entry": {
-    "transport": "sse",
+    "transport": "http",
     "url": "http://localhost:7755/mcp"
   },
   "deprecated_keys": [],
