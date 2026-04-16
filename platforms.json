@@ -34,7 +34,7 @@
     },
     {
       "name": "opencode",
-      "config_path": ".config/opencode/opencode.jsonc",
+      "config_path": ".config/opencode/opencode.json",
       "mcp_servers_key": [
         "mcp"
       ],

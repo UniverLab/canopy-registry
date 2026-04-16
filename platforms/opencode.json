@@ -1,6 +1,6 @@
 {
   "name": "opencode",
-  "config_path": ".config/opencode/opencode.jsonc",
+  "config_path": ".config/opencode/opencode.json",
   "mcp_servers_key": ["mcp"],
   "canopy_entry_key": "canopy",
   "canopy_entry": {

@@ -4,7 +4,7 @@
   "mcp_servers_key": ["mcpServers"],
   "canopy_entry_key": "canopy",
   "canopy_entry": {
-    "type": "remote",
+    "type": "http",
     "url": "http://localhost:7755/mcp",
     "headers": {},
     "tools": ["*"]
