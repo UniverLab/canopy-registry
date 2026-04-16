@@ -237,7 +237,6 @@
       "config_format": "toml",
       "toml_array_format": true,
       "mcp_servers_key": [
-        "tools",
         "mcp_servers"
       ],
       "canopy_entry_key": "canopy",
