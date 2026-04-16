@@ -54,6 +54,10 @@ Add an entry to `platforms.json`:
 | `cli.binary` | Binary name in PATH |
 | `cli.headless_mode` | Command flags to run in headless mode |
 | `cli.interactive_args` | Arguments to pass when launching in interactive (TUI) mode |
+| `cli.fallback_interactive_args` | Fallback arguments if the primary interactive mode fails |
+| `cli.resume_args` | Arguments to resume the most recent session (e.g., `--continue`) |
+| `cli.session_list_cmd` | Subcommand to list sessions (enables canopy-side session picker) |
+| `cli.session_resume_cmd` | Flag to resume a specific session by ID (e.g., `--session`) |
 | `cli.model_flag` | Flag to specify model |
 | `cli.supports_working_dir` | Whether this CLI supports working directory flag |
 | `cli.working_dir_flag` | Flag to set working directory |

@@ -20,10 +20,15 @@
             "type": "string",
             "description": "Path to MCP config file relative to $HOME"
           },
+          "config_format": {
+            "type": "string",
+            "enum": ["json", "toml"],
+            "description": "Config file format. Defaults to JSON when omitted. Use 'toml' for platforms like Codex."
+          },
           "mcp_servers_key": {
             "type": "array",
             "items": { "type": "string" },
-            "description": "JSON key path to the MCP servers object (e.g., ['mcpServers'])"
+            "description": "JSON/TOML key path to the MCP servers object (e.g., ['mcpServers'])"
           },
           "canopy_entry_key": {
             "type": "string",
@@ -59,6 +64,22 @@
               "interactive_args": {
                 "type": "string",
                 "description": "Arguments to pass when launching in interactive (TUI) mode (e.g., --tui, -c)"
+              },
+              "fallback_interactive_args": {
+                "type": "string",
+                "description": "Fallback arguments if the primary interactive mode fails to start"
+              },
+              "resume_args": {
+                "type": "string",
+                "description": "Arguments to resume the most recent session (e.g., --continue, --resume)"
+              },
+              "session_list_cmd": {
+                "type": "string",
+                "description": "Subcommand to list sessions (e.g., 'session list'). Enables canopy-side session picker."
+              },
+              "session_resume_cmd": {
+                "type": "string",
+                "description": "Flag to resume a specific session by ID (e.g., '--session'). The session ID is appended as the next argument."
               },
               "model_flag": {
                 "type": "string",
