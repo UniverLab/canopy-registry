@@ -16,13 +16,15 @@
       "args": ["-y", "@modelcontextprotocol/server-filesystem", "{filesystem_dir}"]
     },
     "fetch": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-fetch"]
+      "command": "uvx",
+      "args": ["mcp-server-fetch"]
     },
     "memory": {
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-memory"],
-      "env": { "MEMORY_FILE_PATH": "{home}/.canopy/memory/memory.json" }
+      "env": {
+        "MEMORY_FILE_PATH": "{home}/.canopy/memory/memory.jsonl"
+      }
     }
   },
   "cli": {

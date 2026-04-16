@@ -1,29 +1,34 @@
 {
   "name": "mistral",
-  "config_path": ".vibe/config.json",
-  "mcp_servers_key": ["mcpServers"],
+  "config_path": ".vibe/config.toml",
+  "config_format": "toml",
+  "toml_array_format": true,
+  "mcp_servers_key": ["mcp_servers"],
   "canopy_entry_key": "canopy",
   "canopy_entry": {
-    "type": "sse",
-    "url": "http://localhost:7755/mcp",
-    "headers": {},
-    "tools": ["*"]
+    "transport": "sse",
+    "url": "http://localhost:7755/mcp"
   },
   "deprecated_keys": [],
   "unsupported_keys": [],
   "recommended_servers": {
     "filesystem": {
+      "transport": "stdio",
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-filesystem", "{filesystem_dir}"]
     },
     "fetch": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-fetch"]
+      "transport": "stdio",
+      "command": "uvx",
+      "args": ["mcp-server-fetch"]
     },
     "memory": {
+      "transport": "stdio",
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-memory"],
-      "env": { "MEMORY_FILE_PATH": "{home}/.canopy/memory/memory.json" }
+      "env": {
+        "MEMORY_FILE_PATH": "{home}/.canopy/memory/memory.jsonl"
+      }
     }
   },
   "cli": {

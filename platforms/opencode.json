@@ -12,17 +12,22 @@
   "unsupported_keys": ["autoApprove", "disabled", "tools", "headers"],
   "recommended_servers": {
     "filesystem": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-filesystem", "{filesystem_dir}"]
+      "type": "local",
+      "command": ["npx", "-y", "@modelcontextprotocol/server-filesystem", "{filesystem_dir}"],
+      "enabled": true
     },
     "fetch": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-fetch"]
+      "type": "local",
+      "command": ["uvx", "mcp-server-fetch"],
+      "enabled": true
     },
     "memory": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-memory"],
-      "env": { "MEMORY_FILE_PATH": "{home}/.canopy/memory/memory.json" }
+      "type": "local",
+      "command": ["npx", "-y", "@modelcontextprotocol/server-memory"],
+      "enabled": true,
+      "environment": {
+        "MEMORY_FILE_PATH": "{home}/.canopy/memory/memory.jsonl"
+      }
     }
   },
   "cli": {
