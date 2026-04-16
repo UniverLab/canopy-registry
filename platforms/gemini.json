@@ -6,8 +6,7 @@
   "canopy_entry": {
     "type": "http",
     "url": "http://localhost:7755/mcp",
-    "headers": {},
-    "tools": ["*"]
+    "headers": {}
   },
   "deprecated_keys": [],
   "unsupported_keys": ["autoApprove", "disabled", "tools"],
