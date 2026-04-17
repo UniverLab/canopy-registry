@@ -34,7 +34,7 @@
   "cli": {
     "binary": "vibe",
     "headless_mode": "-p",
-    "interactive_args": "--tui",
+    "interactive_args": "",
     "model_flag": "--agent",
     "supports_working_dir": true,
     "working_dir_flag": "--workdir",
