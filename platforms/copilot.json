@@ -42,8 +42,8 @@
     "interactive_args": "",
     "model_flag": "--model",
     "supports_working_dir": false,
-    "env_vars": {},
-    "accent_color": [170, 0, 170],
+    "yolo_flag": "--yolo",
+    "env_vars": {},    "accent_color": [170, 0, 170],
     "resume_args": "--continue"
   }
 }

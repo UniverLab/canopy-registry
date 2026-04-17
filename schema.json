@@ -96,6 +96,10 @@
               "type": "string",
               "description": "Flag to set working directory (e.g., --dir, --cwd)"
             },
+            "yolo_flag": {
+              "type": "string",
+              "description": "Flag to auto-approve all actions (e.g., --yolo, --trust-all-tools)"
+            },
             "env_vars": {
               "type": "object",
               "description": "Environment variables to set when running this CLI",

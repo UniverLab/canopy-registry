@@ -4,11 +4,12 @@
 
 set -euo pipefail
 
-# Define paths
-PLATFORMS_DIR="/mnt/c/Users/PC/Documents/Projects/canopy-registry/platforms"
-PLATFORMS_JSON="/mnt/c/Users/PC/Documents/Projects/canopy-registry/platforms.json"
-INDEX_JSON="/mnt/c/Users/PC/Documents/Projects/canopy-registry/index.json"
-SCHEMA_JSON="/mnt/c/Users/PC/Documents/Projects/canopy-registry/schema.json"
+# Define paths relative to script location
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PLATFORMS_DIR="$SCRIPT_DIR/platforms"
+PLATFORMS_JSON="$SCRIPT_DIR/platforms.json"
+INDEX_JSON="$SCRIPT_DIR/index.json"
+SCHEMA_JSON="$SCRIPT_DIR/schema.json"
 
 # Check if required files exist
 echo "Checking required files..."

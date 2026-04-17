@@ -23,6 +23,7 @@
         "interactive_args": "",
         "model_flag": "--model",
         "supports_working_dir": false,
+        "yolo_flag": "--trust-all-tools",
         "env_vars": {},
         "accent_color": [
           175,
@@ -55,6 +56,7 @@
         "model_flag": "-m",
         "supports_working_dir": true,
         "working_dir_flag": "--dir",
+        "yolo_flag": "--dangerously-skip-permissions",
         "env_vars": {},
         "accent_color": [
           92,
@@ -90,6 +92,7 @@
         "interactive_args": "",
         "model_flag": "--model",
         "supports_working_dir": false,
+        "yolo_flag": "--yolo",
         "env_vars": {},
         "accent_color": [
           170,
@@ -97,38 +100,6 @@
           170
         ],
         "resume_args": "--continue"
-      }
-    },
-    {
-      "name": "qwen",
-      "config_path": ".qwen/settings.json",
-      "mcp_servers_key": [
-        "mcpServers"
-      ],
-      "canopy_entry_key": "canopy",
-      "canopy_entry": {
-        "type": "sse",
-        "url": "http://localhost:7755/mcp",
-        "headers": {},
-        "tools": [
-          "*"
-        ]
-      },
-      "deprecated_keys": [],
-      "cli": {
-        "binary": "qwen",
-        "headless_mode": "--print",
-        "interactive_args": "",
-        "model_flag": "--model",
-        "supports_working_dir": true,
-        "working_dir_flag": "--cwd",
-        "env_vars": {},
-        "accent_color": [
-          206,
-          168,
-          244
-        ],
-        "resume_args": "-c"
       }
     },
     {
@@ -159,6 +130,7 @@
         "model_flag": "--model",
         "supports_working_dir": true,
         "working_dir_flag": "--cwd",
+        "yolo_flag": "--yolo",
         "env_vars": {},
         "accent_color": [
           192,
@@ -195,6 +167,7 @@
         "resume_args": "--resume",
         "model_flag": "--model",
         "supports_working_dir": false,
+        "yolo_flag": "--dangerously-skip-permissions",
         "env_vars": {},
         "accent_color": [
           217,
@@ -223,6 +196,7 @@
         "model_flag": "-m",
         "supports_working_dir": true,
         "working_dir_flag": "-C",
+        "yolo_flag": "--dangerously-bypass-approvals-and-sandbox",
         "env_vars": {},
         "accent_color": [
           87,
@@ -253,6 +227,7 @@
         "model_flag": "--agent",
         "supports_working_dir": true,
         "working_dir_flag": "--workdir",
+        "yolo_flag": "-p",
         "env_vars": {},
         "accent_color": [
           251,

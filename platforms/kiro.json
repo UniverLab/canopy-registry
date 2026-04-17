@@ -33,8 +33,8 @@
     "interactive_args": "",
     "model_flag": "--model",
     "supports_working_dir": false,
-    "env_vars": {},
-    "accent_color": [175, 135, 255],
+    "yolo_flag": "--trust-all-tools",
+    "env_vars": {},    "accent_color": [175, 135, 255],
     "resume_args": "chat --resume-picker"
   }
 }

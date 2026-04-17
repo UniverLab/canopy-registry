@@ -5,7 +5,6 @@
     { "name": "kiro", "binary": "kiro-cli" },
     { "name": "opencode", "binary": "opencode" },
     { "name": "copilot", "binary": "copilot" },
-    { "name": "qwen", "binary": "qwen" },
     { "name": "gemini", "binary": "gemini" },
     { "name": "claude", "binary": "claude" },
     { "name": "codex", "binary": "codex" },

@@ -38,7 +38,7 @@
     "resume_args": "--resume",
     "model_flag": "--model",
     "supports_working_dir": false,
-    "env_vars": {},
-    "accent_color": [217, 119, 87]
+    "yolo_flag": "--dangerously-skip-permissions",
+    "env_vars": {},    "accent_color": [217, 119, 87]
   }
 }

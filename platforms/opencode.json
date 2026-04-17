@@ -37,8 +37,8 @@
     "model_flag": "-m",
     "supports_working_dir": true,
     "working_dir_flag": "--dir",
-    "env_vars": {},
-    "accent_color": [92, 156, 245],
+    "yolo_flag": "--dangerously-skip-permissions",
+    "env_vars": {},    "accent_color": [92, 156, 245],
     "resume_args": "-c",
     "session_list_cmd": "session list",
     "session_resume_cmd": "--session"

@@ -34,8 +34,8 @@
     "model_flag": "--model",
     "supports_working_dir": true,
     "working_dir_flag": "--cwd",
-    "env_vars": {},
-    "accent_color": [192, 158, 228],
+    "yolo_flag": "--yolo",
+    "env_vars": {},    "accent_color": [192, 158, 228],
     "resume_args": "--resume"
   }
 }

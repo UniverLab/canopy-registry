@@ -32,7 +32,7 @@
     "model_flag": "-m",
     "supports_working_dir": true,
     "working_dir_flag": "-C",
-    "env_vars": {},
-    "accent_color": [87, 199, 195]
+    "yolo_flag": "--dangerously-bypass-approvals-and-sandbox",
+    "env_vars": {},    "accent_color": [87, 199, 195]
   }
 }

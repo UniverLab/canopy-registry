@@ -34,10 +34,11 @@
   "cli": {
     "binary": "vibe",
     "headless_mode": "-p",
-    "interactive_args": "",
+    "interactive_args": "--tui",
     "model_flag": "--agent",
     "supports_working_dir": true,
     "working_dir_flag": "--workdir",
+    "yolo_flag": "-p",
     "env_vars": {},
     "accent_color": [251, 133, 1],
     "resume_args": "-c"
