@@ -33,7 +33,7 @@
   },
   "cli": {
     "binary": "claude",
-    "headless_mode": "-p",
+    "headless_mode": "-p --dangerously-skip-permissions",
     "interactive_args": "",
     "resume_args": "--resume",
     "model_flag": "--model",

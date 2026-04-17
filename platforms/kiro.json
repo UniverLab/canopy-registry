@@ -28,13 +28,13 @@
     }
   },
   "cli": {
-    "binary": "kiro-cli",
+    "binary": "kiro-cli chat",
     "headless_mode": "chat --no-interactive --trust-all-tools",
     "interactive_args": "",
     "model_flag": "--model",
     "supports_working_dir": false,
     "yolo_flag": "--trust-all-tools",
     "env_vars": {},    "accent_color": [175, 135, 255],
-    "resume_args": "chat --resume-picker"
+    "resume_args": "--resume-picker"
   }
 }

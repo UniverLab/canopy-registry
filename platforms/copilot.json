@@ -42,7 +42,7 @@
     "interactive_args": "",
     "model_flag": "--model",
     "supports_working_dir": false,
-    "yolo_flag": "--yolo",
+    "yolo_flag": "--allow-all-tools",
     "env_vars": {},    "accent_color": [170, 0, 170],
     "resume_args": "--continue"
   }
