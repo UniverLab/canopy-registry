@@ -1,11 +1,11 @@
 name = "claude"
-config_path = ".claude/settings.json"
+config_path = ".claude.json"
 mcp_servers_key = ["mcpServers"]
 deprecated_keys = []
 unsupported_keys = ["autoApprove", "disabled"]
 
 [required_fields]
-type = ["remote", "stdio"]
+type = ["http", "stdio"]
 
 [server_extras.canopy]
 tools = ["*"]

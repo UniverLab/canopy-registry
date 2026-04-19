@@ -1,7 +1,7 @@
 name = "codex"
 config_path = ".codex/config.toml"
 config_format = "toml"
-toml_array_format = true
+toml_array_format = false
 mcp_servers_key = ["mcp_servers"]
 deprecated_keys = []
 unsupported_keys = []
