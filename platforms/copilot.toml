@@ -5,7 +5,7 @@ deprecated_keys = ["task-trigger"]
 unsupported_keys = []
 
 [required_fields]
-type = ["http", "local", "sse"]
+type = ["http", "local"]
 
 [server_extras.canopy]
 tools = ["*"]
@@ -14,9 +14,6 @@ tools = ["*"]
 tools = ["*"]
 
 [server_extras.fetch]
-tools = ["*"]
-
-[server_extras.memory]
 tools = ["*"]
 
 [cli]

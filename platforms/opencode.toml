@@ -20,9 +20,6 @@ enabled = true
 [server_extras.fetch]
 enabled = true
 
-[server_extras.memory]
-enabled = true
-
 [cli]
 binary = "opencode"
 headless_mode = "run --dangerously-skip-permissions"

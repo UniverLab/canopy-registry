@@ -5,7 +5,7 @@ deprecated_keys = []
 unsupported_keys = ["autoApprove", "disabled"]
 
 [required_fields]
-type = ["remote", "stdio", "sse"]
+type = ["remote", "stdio"]
 
 [server_extras.canopy]
 tools = ["*"]

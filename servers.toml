@@ -4,7 +4,6 @@
 # Placeholders:
 #   {filesystem_dir} — user-chosen filesystem root
 #   {home}           — user home directory
-#   {memory_path}    — resolved memory file path
 
 [servers.canopy]
 url = "http://localhost:7755/mcp"
@@ -16,10 +15,3 @@ args = ["-y", "@modelcontextprotocol/server-filesystem", "{filesystem_dir}"]
 [servers.fetch]
 command = "uvx"
 args = ["mcp-server-fetch"]
-
-[servers.memory]
-command = "npx"
-args = ["-y", "@modelcontextprotocol/server-memory"]
-
-[servers.memory.env]
-MEMORY_FILE_PATH = "{home}/.canopy/memory/memory.jsonl"
