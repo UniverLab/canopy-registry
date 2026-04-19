@@ -1,0 +1,36 @@
+name = "opencode"
+config_path = ".config/opencode/opencode.json"
+command_format = "merged"
+mcp_servers_key = ["mcp"]
+deprecated_keys = ["task-trigger"]
+unsupported_keys = ["autoApprove", "disabled", "tools", "headers"]
+
+[fields_mapping]
+env = "environment"
+
+[required_fields]
+type = ["remote", "local"]
+
+[server_extras.canopy]
+enabled = true
+
+[server_extras.filesystem]
+enabled = true
+
+[server_extras.fetch]
+enabled = true
+
+[server_extras.memory]
+enabled = true
+
+[cli]
+binary = "opencode"
+headless_mode = "run --dangerously-skip-permissions"
+interactive_args = ""
+model_flag = "-m"
+supports_working_dir = true
+working_dir_flag = "--dir"
+accent_color = [92, 156, 245]
+resume_args = "-c"
+session_list_cmd = "session list"
+session_resume_cmd = "--session"

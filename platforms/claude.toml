@@ -1,0 +1,21 @@
+name = "claude"
+config_path = ".claude/settings.json"
+mcp_servers_key = ["mcpServers"]
+deprecated_keys = []
+unsupported_keys = ["autoApprove", "disabled"]
+
+[required_fields]
+type = ["remote", "stdio", "sse"]
+
+[server_extras.canopy]
+tools = ["*"]
+
+[cli]
+binary = "claude"
+headless_mode = "-p --dangerously-skip-permissions"
+interactive_args = ""
+resume_args = "--resume"
+model_flag = "--model"
+supports_working_dir = false
+yolo_flag = "--dangerously-skip-permissions"
+accent_color = [217, 119, 87]

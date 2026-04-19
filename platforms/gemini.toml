@@ -1,0 +1,19 @@
+name = "gemini"
+config_path = ".gemini/settings.json"
+mcp_servers_key = ["mcpServers"]
+deprecated_keys = []
+unsupported_keys = ["autoApprove", "disabled", "tools"]
+
+[required_fields]
+type = ["http"]
+
+[cli]
+binary = "gemini"
+headless_mode = "--print"
+interactive_args = ""
+model_flag = "--model"
+supports_working_dir = true
+working_dir_flag = "--cwd"
+yolo_flag = "--yolo"
+accent_color = [192, 158, 228]
+resume_args = "--resume"

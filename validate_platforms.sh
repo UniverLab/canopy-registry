@@ -1,76 +1,88 @@
 #!/bin/bash
 
-# Script to validate consistency between platforms/ directory and platforms.json/schema.json
+# Script to validate consistency between platforms/ directory and index.toml/servers.toml
+# Registry v6: TOML format, canonical servers separated from platform rules.
 
 set -euo pipefail
 
-# Define paths relative to script location
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PLATFORMS_DIR="$SCRIPT_DIR/platforms"
-PLATFORMS_JSON="$SCRIPT_DIR/platforms.json"
-INDEX_JSON="$SCRIPT_DIR/index.json"
-SCHEMA_JSON="$SCRIPT_DIR/schema.json"
+INDEX_TOML="$SCRIPT_DIR/index.toml"
+SERVERS_TOML="$SCRIPT_DIR/servers.toml"
 
-# Check if required files exist
+errors=0
+
 echo "Checking required files..."
-for file in "$PLATFORMS_JSON" "$INDEX_JSON" "$SCHEMA_JSON"; do
+for file in "$INDEX_TOML" "$SERVERS_TOML"; do
     if [ ! -f "$file" ]; then
         echo "ERROR: Missing required file: $file"
-        exit 1
+        errors=$((errors + 1))
     fi
 done
 
-# Extract platform names from index.json
-echo "Extracting platform names from index.json..."
-INDEX_PLATFORMS=$(grep -o '"name": "[^"]*"' "$INDEX_JSON" | cut -d'"' -f4 | sort)
-
-# Extract platform names from platforms.json
-echo "Extracting platform names from platforms.json..."
-PLATFORMS_JSON_NAMES=$(grep -o '"name": "[^"]*"' "$PLATFORMS_JSON" | cut -d'"' -f4 | sort)
-
-# List platform files in platforms/ directory
-echo "Listing platform files in platforms/ directory..."
-PLATFORM_FILES=$(find "$PLATFORMS_DIR" -name "*.json" -exec basename {} .json \; | sort)
-
-# Compare index.json vs platforms.json
-echo "Comparing index.json vs platforms.json..."
-if [ "$INDEX_PLATFORMS" != "$PLATFORMS_JSON_NAMES" ]; then
-    echo "ERROR: Platform names mismatch between index.json and platforms.json"
-    echo "index.json platforms: $INDEX_PLATFORMS"
-    echo "platforms.json platforms: $PLATFORMS_JSON_NAMES"
+if [ ! -d "$PLATFORMS_DIR" ]; then
+    echo "ERROR: Missing platforms/ directory"
     exit 1
-else
-    echo "✓ index.json and platforms.json platforms match"
 fi
 
-# Compare platforms.json vs platforms/ directory
-echo "Comparing platforms.json vs platforms/ directory..."
-if [ "$PLATFORMS_JSON_NAMES" != "$PLATFORM_FILES" ]; then
-    echo "ERROR: Platform names mismatch between platforms.json and platforms/ directory"
-    echo "platforms.json platforms: $PLATFORMS_JSON_NAMES"
-    echo "platforms/ directory: $PLATFORM_FILES"
-    exit 1
+# Extract platform names from index.toml
+echo "Extracting platform names from index.toml..."
+INDEX_PLATFORMS=$(grep '^name = ' "$INDEX_TOML" | sed 's/name = "\(.*\)"/\1/' | sort)
+
+# List platform .toml files
+echo "Listing platform files..."
+PLATFORM_FILES=$(find "$PLATFORMS_DIR" -name "*.toml" -exec basename {} .toml \; | sort)
+
+echo "Comparing index.toml vs platforms/ directory..."
+if [ "$INDEX_PLATFORMS" != "$PLATFORM_FILES" ]; then
+    echo "ERROR: Platform names mismatch"
+    echo "index.toml: $INDEX_PLATFORMS"
+    echo "platforms/: $PLATFORM_FILES"
+    errors=$((errors + 1))
 else
-    echo "✓ platforms.json and platforms/ directory match"
+    echo "✓ index.toml and platforms/ directory match"
 fi
 
-# Validate each platform file against schema (basic checks)
-echo "Validating platform files against schema..."
-for platform_file in $PLATFORM_FILES; do
-    platform_path="$PLATFORMS_DIR/${platform_file}.json"
-    echo "Validating $platform_file..."
-    
-    # Check required fields exist
-    if grep -q '"name"' "$platform_path" && \
-       grep -q '"config_path"' "$platform_path" && \
-       grep -q '"mcp_servers_key"' "$platform_path" && \
-       grep -q '"canopy_entry_key"' "$platform_path" && \
-       grep -q '"canopy_entry"' "$platform_path"; then
-        echo "✓ $platform_file has required fields"
+# Validate each platform TOML
+echo "Validating platform files..."
+for pfile in "$PLATFORMS_DIR"/*.toml; do
+    pname=$(basename "$pfile" .toml)
+    echo "  Validating $pname..."
+
+    # Check required fields
+    has_name=$(grep -c '^name = ' "$pfile" || true)
+    has_config=$(grep -c '^config_path = ' "$pfile" || true)
+    has_key=$(grep -c '^mcp_servers_key = ' "$pfile" || true)
+
+    if [ "$has_name" -ge 1 ] && [ "$has_config" -ge 1 ] && [ "$has_key" -ge 1 ]; then
+        echo "  ✓ $pname has required fields"
     else
-        echo "ERROR: $platform_file missing required fields"
-        exit 1
+        echo "  ERROR: $pname missing required fields (name, config_path, mcp_servers_key)"
+        errors=$((errors + 1))
+    fi
+
+    # Verify name matches filename
+    file_name=$(grep '^name = ' "$pfile" | head -1 | sed 's/name = "\(.*\)"/\1/')
+    if [ "$file_name" = "$pname" ]; then
+        echo "  ✓ $pname name field matches filename"
+    else
+        echo "  ERROR: $pname name field '$file_name' does not match filename"
+        errors=$((errors + 1))
     fi
 done
 
-echo "All validations passed successfully!"
+# Validate servers.toml has at least canopy
+if grep -q '^\[servers\.canopy\]' "$SERVERS_TOML"; then
+    echo "✓ servers.toml has canopy server"
+else
+    echo "ERROR: servers.toml missing [servers.canopy]"
+    errors=$((errors + 1))
+fi
+
+echo ""
+if [ "$errors" -gt 0 ]; then
+    echo "$errors error(s) found!"
+    exit 1
+else
+    echo "All validations passed!"
+fi

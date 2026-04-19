@@ -2,71 +2,110 @@
 
 Platform registry for [agent-canopy](https://github.com/UniverLab/agent-canopy) setup wizard.
 
-Defines supported MCP client platforms and their configuration format so `canopy setup` can automatically configure them.
+Defines supported MCP client platforms, canonical MCP server definitions, and per-platform translation rules so `canopy setup` can automatically configure them all.
+
+## Structure (v6)
+
+```
+index.toml              # Platform list + version
+servers.toml            # Canonical MCP server definitions
+platforms/<name>.toml   # Per-platform translation rules + CLI config
+```
 
 ## How it works
 
-When you run `canopy` or `canopy setup`, the wizard fetches `platforms.json` from this repo to get the latest list of supported platforms. It then:
+When you run `canopy` or `canopy setup`, the wizard:
 
-1. Detects which platforms are installed (by checking if their config file exists)
-2. Lets you select which to configure
-3. Adds the canopy MCP server entry in each platform's expected format
-4. Removes deprecated entries (e.g. old `task-trigger`)
+1. Fetches `index.toml` to get the platform list
+2. Fetches `servers.toml` for canonical MCP server definitions
+3. Fetches `platforms/<name>.toml` for each detected platform
+4. Translates canonical servers → platform-specific format using translation rules
+5. Writes the adapted config to each platform's config file
+
+## servers.toml
+
+Defines MCP servers in a platform-agnostic canonical form:
+
+```toml
+[servers.canopy]
+url = "http://localhost:7755/mcp"
+
+[servers.filesystem]
+command = "npx"
+args = ["-y", "@modelcontextprotocol/server-filesystem", "{filesystem_dir}"]
+```
+
+Placeholders: `{filesystem_dir}`, `{home}`, `{memory_path}`
 
 ## Adding a new platform
 
-Add an entry to `platforms.json`:
+Create `platforms/<name>.toml`:
 
-```json
-{
-  "name": "my-platform",
-  "config_path": ".my-platform/mcp.json",
-  "mcp_servers_key": ["mcpServers"],
-  "canopy_entry_key": "canopy",
-  "canopy_entry": {
-    "url": "http://localhost:7755/mcp"
-  },
-  "deprecated_keys": ["task-trigger"],
-  "unsupported_keys": ["autoApprove"],
-  "cli": {
-    "binary": "my-platform",
-    "headless_mode": "--headless",
-    "interactive_args": "--tui",
-    "model_flag": "--model",
-    "supports_working_dir": true,
-    "working_dir_flag": "--dir",
-    "env_vars": {},
-    "accent_color": [139, 92, 246]
-  }
-}
+```toml
+name = "my-platform"
+config_path = ".my-platform/mcp.json"
+mcp_servers_key = ["mcpServers"]
+deprecated_keys = ["task-trigger"]
+unsupported_keys = ["autoApprove"]
+
+[required_fields]
+type = ["http"]
+
+[server_extras.canopy]
+tools = ["*"]
+
+[cli]
+binary = "my-platform"
+headless_mode = "--headless"
+interactive_args = "--tui"
+model_flag = "--model"
+supports_working_dir = true
+working_dir_flag = "--dir"
+accent_color = [139, 92, 246]
 ```
+
+Then add the entry to `index.toml`:
+
+```toml
+[[platforms]]
+name = "my-platform"
+binary = "my-platform"
+```
+
+## Platform fields
 
 | Field | Description |
 |-------|-------------|
 | `name` | Display name in the wizard |
 | `config_path` | Path to MCP config file relative to `$HOME` |
-| `mcp_servers_key` | JSON key path to the MCP servers object (e.g., ['mcpServers']) |
-| `canopy_entry_key` | Key name for the canopy entry within the MCP servers object (e.g., 'canopy') |
-| `canopy_entry` | The MCP server entry in the platform's expected format |
-| `deprecated_keys` | Old MCP server keys to remove during setup (e.g. task-trigger) |
-| `unsupported_keys` | MCP server config keys that this platform does not support |
-| `cli` | CLI strategy definition for headless execution |
-| `cli.binary` | Binary name in PATH |
-| `cli.headless_mode` | Command flags to run in headless mode |
-| `cli.interactive_args` | Arguments to pass when launching in interactive (TUI) mode |
-| `cli.fallback_interactive_args` | Fallback arguments if the primary interactive mode fails |
-| `cli.resume_args` | Arguments to resume the most recent session (e.g., `--continue`) |
-| `cli.session_list_cmd` | Subcommand to list sessions (enables canopy-side session picker) |
-| `cli.session_resume_cmd` | Flag to resume a specific session by ID (e.g., `--session`) |
-| `cli.model_flag` | Flag to specify model |
-| `cli.supports_working_dir` | Whether this CLI supports working directory flag |
-| `cli.working_dir_flag` | Flag to set working directory |
-| `cli.env_vars` | Environment variables to set when running this CLI |
-| `cli.accent_color` | RGB accent color for this CLI's agents in the TUI |
+| `config_format` | Config file format: `"json"` (default) or `"toml"` |
+| `toml_array_format` | When `true`, TOML uses `[[section]]` array-of-tables |
+| `command_format` | `"separate"` (default): `command` + `args` apart. `"merged"`: single array |
+| `mcp_servers_key` | Key path to MCP servers object (e.g. `["mcpServers"]`) |
+| `deprecated_keys` | Old MCP server keys to remove during setup |
+| `unsupported_keys` | Config keys this platform does not support (stripped on sync) |
+| `fields_mapping` | Renames canonical fields (e.g. `{ env = "environment" }`) |
+| `required_fields` | Fields that must be present; first value is default (e.g. `{ type = ["http"] }`) |
+| `server_extras` | Per-server extra fields merged into the adapted config (e.g. `[server_extras.canopy] tools = ["*"]`) |
+| `skills_dir` | Platform's skills directory relative to `$HOME` |
+| `cli` | CLI strategy definition for headless/interactive execution |
 
-## Schema
+### CLI fields
 
-See [schema.json](schema.json) for the full JSON Schema.
+| Field | Description |
+|-------|-------------|
+| `binary` | Binary name in PATH |
+| `headless_mode` | Flags for headless mode |
+| `interactive_args` | Arguments for TUI mode |
+| `fallback_interactive_args` | Fallback if primary interactive mode fails |
+| `resume_args` | Arguments to resume the most recent session |
+| `session_list_cmd` | Subcommand to list sessions |
+| `session_resume_cmd` | Flag to resume a specific session by ID |
+| `model_flag` | Flag to specify model |
+| `supports_working_dir` | Whether CLI supports working directory flag |
+| `working_dir_flag` | Flag to set working directory |
+| `env_vars` | Environment variables to set when running |
+| `accent_color` | RGB accent color for TUI |
 
 ## License
 

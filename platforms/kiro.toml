@@ -1,0 +1,20 @@
+name = "kiro"
+config_path = ".kiro/settings/mcp.json"
+mcp_servers_key = ["mcpServers"]
+deprecated_keys = ["task-trigger"]
+unsupported_keys = []
+skills_dir = ".kiro/skills"
+
+[server_extras.canopy]
+disabled = false
+autoApprove = []
+
+[cli]
+binary = "kiro-cli"
+headless_mode = "chat --no-interactive --trust-all-tools"
+interactive_args = "chat"
+model_flag = "--model"
+supports_working_dir = false
+yolo_flag = "--trust-all-tools"
+accent_color = [175, 135, 255]
+resume_args = "--resume-picker"

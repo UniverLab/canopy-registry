@@ -1,0 +1,29 @@
+version = 6
+
+[[platforms]]
+name = "kiro"
+binary = "kiro-cli"
+
+[[platforms]]
+name = "opencode"
+binary = "opencode"
+
+[[platforms]]
+name = "copilot"
+binary = "copilot"
+
+[[platforms]]
+name = "gemini"
+binary = "gemini"
+
+[[platforms]]
+name = "claude"
+binary = "claude"
+
+[[platforms]]
+name = "codex"
+binary = "codex"
+
+[[platforms]]
+name = "mistral"
+binary = "vibe"

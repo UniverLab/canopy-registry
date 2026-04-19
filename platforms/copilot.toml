@@ -1,0 +1,30 @@
+name = "copilot"
+config_path = ".copilot/mcp-config.json"
+mcp_servers_key = ["mcpServers"]
+deprecated_keys = ["task-trigger"]
+unsupported_keys = []
+
+[required_fields]
+type = ["http", "local", "sse"]
+
+[server_extras.canopy]
+tools = ["*"]
+
+[server_extras.filesystem]
+tools = ["*"]
+
+[server_extras.fetch]
+tools = ["*"]
+
+[server_extras.memory]
+tools = ["*"]
+
+[cli]
+binary = "copilot"
+headless_mode = "-p"
+interactive_args = ""
+model_flag = "--model"
+supports_working_dir = false
+yolo_flag = "--allow-all-tools"
+accent_color = [170, 0, 170]
+resume_args = "--continue"

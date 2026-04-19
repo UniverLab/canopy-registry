@@ -1,0 +1,18 @@
+name = "codex"
+config_path = ".codex/config.toml"
+config_format = "toml"
+toml_array_format = true
+mcp_servers_key = ["mcp_servers"]
+deprecated_keys = []
+unsupported_keys = []
+
+[cli]
+binary = "codex"
+headless_mode = "exec"
+interactive_args = ""
+resume_args = "resume"
+model_flag = "-m"
+supports_working_dir = true
+working_dir_flag = "-C"
+yolo_flag = "--dangerously-bypass-approvals-and-sandbox"
+accent_color = [87, 199, 195]
