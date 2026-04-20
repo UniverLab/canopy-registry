@@ -3,6 +3,7 @@ config_path = ".copilot/mcp-config.json"
 mcp_servers_key = ["mcpServers"]
 deprecated_keys = ["task-trigger"]
 unsupported_keys = []
+skills_dir = ".agents/skills"
 
 [required_fields]
 type = ["http", "local"]

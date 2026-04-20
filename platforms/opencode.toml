@@ -4,6 +4,7 @@ command_format = "merged"
 mcp_servers_key = ["mcp"]
 deprecated_keys = ["task-trigger"]
 unsupported_keys = ["autoApprove", "disabled", "tools", "headers"]
+skills_dir = ".agents/skills"
 
 [fields_mapping]
 env = "environment"

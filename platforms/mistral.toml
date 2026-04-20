@@ -5,6 +5,7 @@ toml_array_format = true
 mcp_servers_key = ["mcp_servers"]
 deprecated_keys = []
 unsupported_keys = []
+skills_dir = ".vibe/skills"
 
 [fields_mapping]
 type = "transport"
