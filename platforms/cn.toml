@@ -4,7 +4,7 @@ mcp_servers_key = ["mcpServers"]
 deprecated_keys = []
 unsupported_keys = ["autoApprove", "disabled", "tools", "headers"]
 skills_dir = ".agents/skills"
-instruction_file = "AGENTS.md"
+instruction_file = ".continue/rules"
 
 [fields_mapping]
 env = "environment"
