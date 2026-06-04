@@ -27,3 +27,11 @@ binary = "codex"
 [[platforms]]
 name = "mistral"
 binary = "vibe"
+
+[[platforms]]
+name = "blackbox"
+binary = "blackbox"
+
+[[platforms]]
+name = "cursor"
+binary = "agent"
