@@ -6,6 +6,10 @@ mcp_servers_key = ["mcp_servers"]
 deprecated_keys = []
 unsupported_keys = []
 skills_dir = ".agents/skills"
+instruction_file = "AGENTS.md"
+
+[required_fields]
+type = ["stdio"]
 
 [cli]
 binary = "codex"

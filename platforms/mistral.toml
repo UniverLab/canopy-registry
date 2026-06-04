@@ -6,12 +6,13 @@ mcp_servers_key = ["mcp_servers"]
 deprecated_keys = []
 unsupported_keys = []
 skills_dir = ".vibe/skills"
+instruction_file = "AGENTS.md"
 
 [fields_mapping]
 type = "transport"
 
 [required_fields]
-transport = ["http", "stdio"]
+transport = ["stdio", "http"]
 
 [cli]
 binary = "vibe"

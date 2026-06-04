@@ -4,6 +4,10 @@ mcp_servers_key = ["mcpServers"]
 deprecated_keys = ["task-trigger"]
 unsupported_keys = []
 skills_dir = ".kiro/skills"
+instruction_file = "AGENTS.md"
+
+[required_fields]
+type = ["stdio"]
 
 [server_extras.canopy]
 disabled = false

@@ -4,9 +4,10 @@ mcp_servers_key = ["mcpServers"]
 deprecated_keys = []
 unsupported_keys = ["autoApprove", "disabled"]
 skills_dir = ".claude/skills"
+instruction_file = "CLAUDE.md"
 
 [required_fields]
-type = ["http", "stdio"]
+type = ["stdio", "http"]
 
 [server_extras.canopy]
 tools = ["*"]

@@ -6,7 +6,8 @@
 #   {home}           — user home directory
 
 [servers.canopy]
-url = "http://localhost:7755/mcp"
+command = "canopy"
+args = ["bridge"]
 
 [servers.filesystem]
 command = "npx"
