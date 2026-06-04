@@ -1,0 +1,35 @@
+name = "kilo"
+config_path = ".config/kilo/kilo.json"
+command_format = "merged"
+mcp_servers_key = ["mcp"]
+deprecated_keys = []
+unsupported_keys = ["autoApprove", "disabled", "tools", "headers"]
+skills_dir = ".agents/skills"
+instruction_file = "AGENTS.md"
+
+[fields_mapping]
+env = "environment"
+
+[required_fields]
+type = ["stdio", "local"]
+
+[server_extras.canopy]
+enabled = true
+
+[server_extras.filesystem]
+enabled = true
+
+[server_extras.fetch]
+enabled = true
+
+[cli]
+binary = "kilo"
+headless_mode = "run"
+interactive_args = ""
+model_flag = "-m"
+supports_working_dir = true
+working_dir_flag = ""
+accent_color = [0, 200, 100]
+resume_args = ""
+session_list_cmd = "session list"
+session_resume_cmd = ""

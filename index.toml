@@ -35,3 +35,19 @@ binary = "blackbox"
 [[platforms]]
 name = "cursor"
 binary = "agent"
+
+[[platforms]]
+name = "kilo"
+binary = "kilo"
+
+[[platforms]]
+name = "cline"
+binary = "cline"
+
+[[platforms]]
+name = "qwen"
+binary = "qwen"
+
+[[platforms]]
+name = "cn"
+binary = "cn"

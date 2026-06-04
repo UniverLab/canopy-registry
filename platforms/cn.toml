@@ -1,0 +1,35 @@
+name = "cn"
+config_path = ".continue/config.json"
+mcp_servers_key = ["mcpServers"]
+deprecated_keys = []
+unsupported_keys = ["autoApprove", "disabled", "tools", "headers"]
+skills_dir = ".agents/skills"
+instruction_file = "AGENTS.md"
+
+[fields_mapping]
+env = "environment"
+
+[required_fields]
+type = ["stdio", "local"]
+
+[server_extras.canopy]
+enabled = true
+
+[server_extras.filesystem]
+enabled = true
+
+[server_extras.fetch]
+enabled = true
+
+[cli]
+binary = "cn"
+headless_mode = "-p"
+interactive_args = ""
+model_flag = "--model"
+supports_working_dir = true
+working_dir_flag = ""
+yolo_flag = "--auto"
+accent_color = [138, 43, 226]
+resume_args = ""
+session_list_cmd = ""
+session_resume_cmd = "--resume"
