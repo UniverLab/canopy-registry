@@ -2,7 +2,7 @@ name = "copilot"
 config_path = ".copilot/mcp-config.json"
 mcp_servers_key = ["mcpServers"]
 deprecated_keys = ["task-trigger"]
-unsupported_keys = []
+unsupported_keys = ["headers"]
 skills_dir = ".agents/skills"
 instruction_file = ".github/copilot-instructions.md"
 

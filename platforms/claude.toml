@@ -2,7 +2,7 @@ name = "claude"
 config_path = ".claude.json"
 mcp_servers_key = ["mcpServers"]
 deprecated_keys = []
-unsupported_keys = ["autoApprove", "disabled"]
+unsupported_keys = ["autoApprove", "disabled", "headers"]
 skills_dir = ".claude/skills"
 instruction_file = "CLAUDE.md"
 

@@ -4,7 +4,7 @@ config_format = "toml"
 toml_array_format = false
 mcp_servers_key = ["mcp_servers"]
 deprecated_keys = []
-unsupported_keys = []
+unsupported_keys = ["headers"]
 skills_dir = ".agents/skills"
 instruction_file = "AGENTS.md"
 

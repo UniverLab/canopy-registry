@@ -2,7 +2,7 @@ name = "gemini"
 config_path = ".gemini/settings.json"
 mcp_servers_key = ["mcpServers"]
 deprecated_keys = []
-unsupported_keys = ["autoApprove", "disabled", "tools"]
+unsupported_keys = ["autoApprove", "disabled", "tools", "headers"]
 skills_dir = ".agents/skills"
 instruction_file = "GEMINI.md"
 
