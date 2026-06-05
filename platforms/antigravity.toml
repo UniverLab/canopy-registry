@@ -1,0 +1,36 @@
+name = "antigravity"
+config_path = ".gemini/antigravity-cli/mcp_config.json"
+mcp_servers_key = ["mcpServers"]
+deprecated_keys = []
+unsupported_keys = ["autoApprove", "disabled", "tools", "headers"]
+skills_dir = ".agents/skills"
+instruction_file = "GEMINI.md"
+
+[fields_mapping]
+env = "environment"
+url = "serverUrl"
+
+[required_fields]
+type = ["stdio", "local"]
+
+[server_extras.canopy]
+enabled = true
+
+[server_extras.filesystem]
+enabled = true
+
+[server_extras.fetch]
+enabled = true
+
+[cli]
+binary = "agy"
+headless_mode = "-p --dangerously-skip-permissions"
+interactive_args = ""
+model_flag = ""
+supports_working_dir = true
+working_dir_flag = "--add-dir"
+yolo_flag = "--dangerously-skip-permissions"
+accent_color = [138, 180, 248]
+resume_args = "--continue"
+session_list_cmd = ""
+session_resume_cmd = "--conversation"

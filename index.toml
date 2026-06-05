@@ -51,3 +51,7 @@ binary = "qwen"
 [[platforms]]
 name = "cn"
 binary = "cn"
+
+[[platforms]]
+name = "antigravity"
+binary = "agy"
