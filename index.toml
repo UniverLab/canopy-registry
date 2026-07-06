@@ -55,3 +55,7 @@ binary = "cn"
 [[platforms]]
 name = "antigravity"
 binary = "agy"
+
+[[platforms]]
+name = "mimo"
+binary = "mimo"

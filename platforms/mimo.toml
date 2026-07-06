@@ -1,0 +1,34 @@
+name = "mimo"
+config_path = ".claude.json"
+mcp_servers_key = ["mcpServers"]
+deprecated_keys = []
+unsupported_keys = ["autoApprove", "disabled", "tools"]
+skills_dir = ".agents/skills"
+instruction_file = "AGENTS.md"
+
+[fields_mapping]
+env = "environment"
+
+[required_fields]
+type = ["stdio", "http"]
+
+[server_extras.canopy]
+enabled = true
+
+[server_extras.filesystem]
+enabled = true
+
+[server_extras.fetch]
+enabled = true
+
+[cli]
+binary = "mimo"
+headless_mode = "run --dangerously-skip-permissions"
+interactive_args = ""
+model_flag = "-m"
+supports_working_dir = false
+accent_color = [138, 180, 248]
+resume_args = "--continue"
+session_list_cmd = "session list"
+session_resume_cmd = "--session"
+yolo_flag = "--dangerously-skip-permissions"
