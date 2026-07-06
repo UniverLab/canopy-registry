@@ -31,4 +31,4 @@ accent_color = [251, 129, 71]
 resume_args = "--continue"
 session_list_cmd = "session list"
 session_resume_cmd = "--session"
-yolo_flag = "--dangerously-skip-permissions"
+
