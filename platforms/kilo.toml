@@ -33,3 +33,9 @@ accent_color = [0, 200, 100]
 resume_args = "-c"
 session_list_cmd = "session list"
 session_resume_cmd = "--session"
+# List-after-run session id capture (RS1 phase 2). kilo also honors
+# `--format json` (opencode-family). Verified 2026-07-17:
+#   $ kilo session list --format json
+#   [ { "id": "ses_094c24b9effe22TCWKl6BDYvSu", "title": "...", ... }, ... ]
+session_list_format_args = "--format json"
+session_id_pattern = '"id"\s*:\s*"([^"]+)"'

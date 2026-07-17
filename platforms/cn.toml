@@ -33,3 +33,11 @@ accent_color = [138, 43, 226]
 resume_args = "--resume"
 session_list_cmd = "ls"
 session_resume_cmd = "--fork"
+# List-after-run session id capture (RS1 phase 2): cn has no set-at-spawn flag,
+# but `cn ls --json` emits an object wrapping a `sessions` array whose entries
+# carry a UUID `"id"`. The shared `"id"` pattern matches it too. Verified
+# 2026-07-17:
+#   $ cn ls --json
+#   { "sessions": [ { "id": "8ae15a84-fec0-43b4-9cb8-47293662302e", ... }, ... ] }
+session_list_format_args = "--json"
+session_id_pattern = '"id"\s*:\s*"([^"]+)"'

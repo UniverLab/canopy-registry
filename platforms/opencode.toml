@@ -33,3 +33,10 @@ accent_color = [92, 156, 245]
 resume_args = "-c"
 session_list_cmd = "session list"
 session_resume_cmd = "--session"
+# List-after-run session id capture (RS1 phase 2): opencode has no set-at-spawn
+# flag, but `session list --format json` emits a stable JSON array whose
+# objects carry an `"id"` key. Verified 2026-07-17:
+#   $ opencode session list --format json
+#   [ { "id": "ses_09391965fffecUt48fWM7DI5Yq", "title": "...", ... }, ... ]
+session_list_format_args = "--format json"
+session_id_pattern = '"id"\s*:\s*"([^"]+)"'
