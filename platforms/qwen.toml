@@ -33,3 +33,4 @@ accent_color = [255, 102, 0]
 resume_args = "--continue"
 session_list_cmd = ""
 session_resume_cmd = "--resume"
+session_id_set_flag = "--session-id"

@@ -19,3 +19,4 @@ working_dir_flag = "--cwd"
 yolo_flag = "--yolo"
 accent_color = [192, 158, 228]
 resume_args = "--resume"
+session_id_set_flag = "--session-id"

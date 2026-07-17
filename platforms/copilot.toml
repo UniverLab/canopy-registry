@@ -27,3 +27,4 @@ supports_working_dir = false
 yolo_flag = "--allow-all-tools"
 accent_color = [170, 0, 170]
 resume_args = "--continue"
+session_id_set_flag = "--session-id"
