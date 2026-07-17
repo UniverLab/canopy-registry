@@ -30,6 +30,6 @@ supports_working_dir = true
 working_dir_flag = "--workspace"
 yolo_flag = "--yolo"
 accent_color = [0, 150, 136]
-resume_args = "-c"
+resume_args = "--continue"
 session_list_cmd = ""
 session_resume_cmd = "--resume"

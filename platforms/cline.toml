@@ -32,5 +32,5 @@ working_dir_flag = "-c"
 yolo_flag = "--yolo"
 accent_color = [0, 122, 255]
 resume_args = ""
-session_list_cmd = ""
-session_resume_cmd = ""
+session_list_cmd = "history"
+session_resume_cmd = "--id"
