@@ -19,3 +19,8 @@ supports_working_dir = false
 yolo_flag = "--dangerously-skip-permissions"
 accent_color = [217, 119, 87]
 session_id_set_flag = "--session-id"
+# Headless resume-by-id (RS2): claude resumes a session by id in print mode,
+# pairing with the set-at-spawn id above so a fail-edge bounce continues the
+# same session. Verified 2026-07-17 via `claude --help`:
+#   -r, --resume [value]   Resume a conversation by session ID, or ...
+session_resume_cmd = "--resume"
