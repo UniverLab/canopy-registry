@@ -49,7 +49,7 @@ name = "qwen"
 binary = "qwen"
 
 [[platforms]]
-name = "cn"
+name = "continue"
 binary = "cn"
 
 [[platforms]]
