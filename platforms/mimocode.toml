@@ -1,4 +1,4 @@
-name = "mimo"
+name = "mimocode"
 config_path = ".claude.json"
 mcp_servers_key = ["mcpServers"]
 deprecated_keys = []
