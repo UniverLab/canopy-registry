@@ -34,3 +34,5 @@ accent_color = [0, 122, 255]
 resume_args = ""
 session_list_cmd = "history"
 session_resume_cmd = "--id"
+session_list_format_args = "--json"
+session_id_pattern = '"sessionId"\s*:\s*"([^"]+)"'
