@@ -33,6 +33,18 @@ accent_color = [92, 156, 245]
 resume_args = "-c"
 session_list_cmd = "session list"
 session_resume_cmd = "--session"
+# opencode is a universal gateway: `opencode models` prints every model it can
+# run, one passable id per line in the `provider/model` form its `-m` flag
+# requires (e.g. `opencode/big-pickle`, `opencode-go/glm-5.2`). models.dev knows
+# neither this prefix form nor opencode's private zen catalog, so agent_models
+# treats this enumeration as the authoritative source of passable ids for the
+# platform. Verified 2026-07-21:
+#   $ opencode models
+#   opencode/big-pickle
+#   opencode/mimo-v2.5-free
+#   opencode-go/glm-5.2
+#   ...
+models_list_cmd = "models"
 # List-after-run session id capture (RS1 phase 2): opencode has no set-at-spawn
 # flag, but `session list --format json` emits a stable JSON array whose
 # objects carry an `"id"` key. Verified 2026-07-17:
