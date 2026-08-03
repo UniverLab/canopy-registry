@@ -13,7 +13,7 @@ type = ["stdio"]
 
 [cli]
 binary = "codex"
-headless_mode = "exec"
+headless_mode = "exec --dangerously-bypass-approvals-and-sandbox"
 interactive_args = ""
 resume_args = "resume"
 model_flag = "-m"

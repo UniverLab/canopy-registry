@@ -24,7 +24,7 @@ enabled = true
 
 [cli]
 binary = "agy"
-headless_mode = "-p --dangerously-skip-permissions"
+headless_mode = "--dangerously-skip-permissions --print-timeout 24h -p"
 interactive_args = ""
 model_flag = ""
 supports_working_dir = true
