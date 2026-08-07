@@ -25,4 +25,8 @@ supports_working_dir = false
 yolo_flag = "--yolo"
 accent_color = [192, 158, 228]
 resume_args = "--resume"
-session_id_set_flag = "--session-id"
+# No `session_id_set_flag`, even though `--session-id` exists and does name a
+# new session here. The engine injects the session flag between the headless
+# flags and the prompt, and `-p` must be immediately followed by the prompt —
+# so declaring it would produce `-p --session-id <uuid> <prompt>` and the
+# prompt slot would be eaten by the flag. Same shape as the copilot bug.
