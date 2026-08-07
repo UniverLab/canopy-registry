@@ -23,7 +23,7 @@ enabled = true
 
 [cli]
 binary = "agent"
-headless_mode = "-p --force --approve-mcps"
+headless_mode = "-p --force --trust --approve-mcps"
 interactive_args = ""
 model_flag = "--model"
 supports_working_dir = true

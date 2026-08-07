@@ -27,4 +27,11 @@ supports_working_dir = false
 yolo_flag = "--allow-all-tools"
 accent_color = [170, 0, 170]
 resume_args = "--continue"
-session_id_set_flag = "--session-id"
+# No `session_id_set_flag`. copilot's `--session-id` RESUMES an existing
+# session, it does not name a new one, so handing it a freshly minted uuid is
+# wrong on its own terms. It also broke every real run: the engine injects the
+# session flag between the headless flags and the prompt, and `-p/--prompt`
+# takes a value — so `-p --session-id <uuid> <prompt>` made `--session-id` the
+# prompt text and left the uuid and the real prompt as stray positionals,
+# which the CLI reports as "your prompt was not quoted". Resume by id belongs
+# in `session_resume_cmd` (`--resume`) if it is ever wired up.

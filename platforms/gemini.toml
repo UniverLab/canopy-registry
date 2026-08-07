@@ -11,11 +11,17 @@ type = ["stdio"]
 
 [cli]
 binary = "gemini"
-headless_mode = "--print"
+# `--print` does not exist: the CLI rejects it with "Unknown argument: print".
+# Headless is `-p/--prompt <text>`, and since the prompt is appended right
+# after these flags, `-p` has to be LAST or it swallows the next flag as its
+# value. `--skip-trust` is required because a headless run in an untrusted
+# directory exits 55 rather than prompting.
+headless_mode = "--skip-trust -p"
 interactive_args = ""
 model_flag = "--model"
-supports_working_dir = true
-working_dir_flag = "--cwd"
+# `--cwd` does not exist either; gemini has no working-directory flag (only
+# `--include-directories`, which adds to the workspace rather than moving it).
+supports_working_dir = false
 yolo_flag = "--yolo"
 accent_color = [192, 158, 228]
 resume_args = "--resume"
