@@ -24,7 +24,15 @@ enabled = true
 
 [cli]
 binary = "kilo"
-headless_mode = "run"
+# Without the permission flag, a headless kilo run auto-REJECTS every tool
+# call it did not already have rights for and then exits 0 with no output —
+# it does not hang or error, it just silently does nothing. Measured
+# 2026-08-07: a reviewer node died five times in a row on
+# "permission requested: bash (git diff ...); auto-rejecting".
+# `--dangerously-skip-permissions` approves what is not explicitly denied,
+# matching the opencode family it is forked from; `--auto` approves
+# everything and is the blunter option.
+headless_mode = "run --dangerously-skip-permissions"
 interactive_args = ""
 model_flag = "-m"
 supports_working_dir = true
