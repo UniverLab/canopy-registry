@@ -1,4 +1,4 @@
-version = 6
+version = 7
 
 [[platforms]]
 name = "kiro"
@@ -59,3 +59,7 @@ binary = "agy"
 [[platforms]]
 name = "mimocode"
 binary = "mimo"
+
+[[platforms]]
+name = "qoder"
+binary = "qoder"

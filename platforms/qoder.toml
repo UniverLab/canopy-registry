@@ -1,0 +1,33 @@
+name = "qoder"
+# Verified 2026-08-10 by adding a throwaway user-scope server and observing
+# where it landed: `qoder mcp add -s user …` writes into
+# ~/.qoder/settings.json under `mcpServers`. That file ships with the CLI, so
+# platform detection (which tests config_path for existence) works even before
+# any MCP server is configured — unlike a `.qoder.json` that would only appear
+# after the first `mcp add`.
+config_path = ".qoder/settings.json"
+mcp_servers_key = ["mcpServers"]
+deprecated_keys = []
+unsupported_keys = ["autoApprove", "disabled", "tools"]
+skills_dir = ".qoder/skills"
+instruction_file = "AGENTS.md"
+
+[required_fields]
+type = ["stdio", "http"]
+
+[cli]
+binary = "qoder"
+# The prompt is a POSITIONAL argument and `-p/--print` is a boolean, so the
+# session flag can sit between them without eating the prompt — unlike copilot
+# and gemini, whose prompt flags take a value.
+headless_mode = "-p --dangerously-skip-permissions"
+interactive_args = ""
+model_flag = "-m"
+supports_working_dir = true
+working_dir_flag = "--cwd"
+yolo_flag = "--dangerously-skip-permissions"
+accent_color = [95, 215, 135]
+resume_args = "--continue"
+session_id_set_flag = "--session-id"
+session_resume_cmd = "--resume"
+session_list_cmd = "--list-sessions"
