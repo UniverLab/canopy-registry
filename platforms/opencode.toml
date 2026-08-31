@@ -52,3 +52,8 @@ models_list_cmd = "models"
 #   [ { "id": "ses_09391965fffecUt48fWM7DI5Yq", "title": "...", ... }, ... ]
 session_list_format_args = "--format json"
 session_id_pattern = '"id"\s*:\s*"([^"]+)"'
+invocation_template = "-m {{model}} --dir {{workdir}} --variant {{effort}} {{prompt}}"
+
+[cli.effort_declaration]
+form = "--variant"
+values = ["high", "max", "minimal"]

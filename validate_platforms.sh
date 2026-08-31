@@ -69,6 +69,24 @@ for pfile in "$PLATFORMS_DIR"/*.toml; do
         echo "  ERROR: $pname name field '$file_name' does not match filename"
         errors=$((errors + 1))
     fi
+
+    # Check invocation_template contains {{prompt}} if present
+    if grep -q '^invocation_template' "$pfile"; then
+        template=$(grep '^invocation_template' "$pfile" | head -1 | sed 's/invocation_template = "\(.*\)"/\1/')
+        if [[ "$template" != *"{{prompt}}"* ]]; then
+            echo "  ERROR: $pname invocation_template missing {{prompt}}"
+            errors=$((errors + 1))
+        else
+            echo "  ✓ $pname invocation_template contains {{prompt}}"
+        fi
+    fi
+
+    # Check effort_declaration exists
+    if grep -q '^\[cli.effort_declaration\]' "$pfile"; then
+        echo "  ✓ $pname has effort_declaration"
+    else
+        echo "  WARNING: $pname missing effort_declaration (will default to not supported)"
+    fi
 done
 
 # Validate servers.toml has at least canopy

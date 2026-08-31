@@ -37,4 +37,8 @@ session_resume_cmd = "--session"
 #   [ { "id": "ses_093945560ffe4rr57EbO7cM1TH", "title": "...", ... }, ... ]
 session_list_format_args = "--format json"
 session_id_pattern = '"id"\s*:\s*"([^"]+)"'
+invocation_template = "-m {{model}} {{prompt}}"
 
+[cli.effort_declaration]
+form = ""
+values = []

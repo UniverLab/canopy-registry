@@ -33,3 +33,8 @@ accent_color = [222, 227, 228]
 resume_args = ""
 session_list_cmd = ""
 session_resume_cmd = ""
+invocation_template = "-p {{prompt}} -m {{model}}"
+
+[cli.effort_declaration]
+form = ""
+values = []

@@ -24,3 +24,8 @@ session_id_set_flag = "--session-id"
 # same session. Verified 2026-07-17 via `claude --help`:
 #   -r, --resume [value]   Resume a conversation by session ID, or ...
 session_resume_cmd = "--resume"
+invocation_template = "--effort {{effort}} --model {{model}} {{session_flag}} {{session_id}} {{prompt}}"
+
+[cli.effort_declaration]
+form = "--effort"
+values = ["low", "medium", "high", "xhigh", "max"]

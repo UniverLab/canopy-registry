@@ -24,3 +24,8 @@ working_dir_flag = "--workdir"
 yolo_flag = "--agent auto-approve"
 accent_color = [251, 133, 1]
 resume_args = "-c"
+invocation_template = "--agent {{model}} --workdir {{workdir}} -p {{prompt}}"
+
+[cli.effort_declaration]
+form = ""
+values = []

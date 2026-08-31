@@ -41,3 +41,8 @@ session_resume_cmd = "--fork"
 #   { "sessions": [ { "id": "8ae15a84-fec0-43b4-9cb8-47293662302e", ... }, ... ] }
 session_list_format_args = "--json"
 session_id_pattern = '"id"\s*:\s*"([^"]+)"'
+invocation_template = "--model {{model}} {{prompt}}"
+
+[cli.effort_declaration]
+form = ""
+values = []

@@ -22,3 +22,8 @@ supports_working_dir = false
 yolo_flag = "--trust-all-tools"
 accent_color = [175, 135, 255]
 resume_args = "--resume-picker"
+invocation_template = "--model {{model}} {{prompt}}"
+
+[cli.effort_declaration]
+form = ""
+values = []
