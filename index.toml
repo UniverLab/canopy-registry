@@ -1,4 +1,4 @@
-version = 7
+version = 8
 
 [[platforms]]
 name = "kiro"
@@ -63,3 +63,11 @@ binary = "mimo"
 [[platforms]]
 name = "qoder"
 binary = "qoder"
+
+[[platforms]]
+name = "devin"
+binary = "devin"
+
+[[platforms]]
+name = "codebuddy"
+binary = "codebuddy"

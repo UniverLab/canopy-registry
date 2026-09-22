@@ -1,0 +1,65 @@
+name = "devin"
+config_path = ".config/devin/mcp_config.json"
+mcp_servers_key = ["mcpServers"]
+deprecated_keys = []
+unsupported_keys = ["autoApprove", "disabled", "tools", "headers"]
+skills_dir = ".agents/skills"
+instruction_file = "AGENTS.md"
+
+# `devin mcp add` writes `"transport": "stdio"`, not `"type"`. Verified
+# 2026-09-22 by adding a throwaway stdio server at user scope:
+#   $ devin mcp add --scope user zz2 -- echo hi
+#   $ cat ~/.config/devin/mcp_config.json
+#   { "mcpServers": { "zz2": { "command": "echo", "args": ["hi"],
+#                             "transport": "stdio" } } }
+[fields_mapping]
+type = "transport"
+
+[required_fields]
+type = ["stdio", "http", "sse"]
+
+[server_extras.canopy]
+enabled = true
+
+[server_extras.filesystem]
+enabled = true
+
+[server_extras.fetch]
+enabled = true
+
+[cli]
+binary = "devin"
+# `-p/--print` takes the prompt inline. `--permission-mode dangerous` is the
+# yolo level ("auto" only auto-approves read-only tools, so a headless run
+# would stall on the first edit). `--respect-workspace-trust false` is not
+# optional for a loop: print mode cannot show the trust prompt and FAILS in an
+# untrusted directory, which is every fresh worktree.
+headless_mode = "--permission-mode dangerous --respect-workspace-trust false -p"
+interactive_args = ""
+model_flag = "--model"
+# No working-directory flag: the positional PATH argument opens Devin Desktop,
+# it does not set the agent's directory. canopy sets the process cwd instead.
+supports_working_dir = false
+yolo_flag = "--permission-mode dangerous"
+accent_color = [64, 110, 255]
+resume_args = "-c"
+session_list_cmd = "list --format json"
+session_resume_cmd = "-r"
+# List-after-run session id capture: `devin list --format json` emits a JSON
+# array of the sessions in the current directory. Verified 2026-09-22 (empty
+# array in a directory with no sessions):
+#   $ devin list --format json
+#   []
+session_list_format_args = ""
+session_id_pattern = '"id"\s*:\s*"([^"]+)"'
+# No `models_list_cmd`: `devin models list` prints a decorated, indented
+# catalogue grouped by family, and its `--format json` emits an object
+# (`{"families":[{"variants":[{"model_uid":...}]}]}`). canopy's native
+# enumeration takes every non-empty line as one passable id, so either form
+# would produce garbage. Model ids are of the form `claude-sonnet-5-high`,
+# `claude-opus-5-5-max`, family aliases (`sonnet`, `fable`) also work.
+invocation_template = "--model {{model}} {{prompt}}"
+
+# No effort form: like opencode v2, devin folds the reasoning level into the
+# model id (`claude-sonnet-5-low|medium|high|xhigh|max`), so effort is chosen
+# by naming the model, not by a separate argument.

@@ -1,0 +1,46 @@
+name = "codebuddy"
+config_path = ".codebuddy.json"
+mcp_servers_key = ["mcpServers"]
+deprecated_keys = []
+unsupported_keys = ["autoApprove", "disabled", "tools", "headers"]
+skills_dir = ".agents/skills"
+instruction_file = "AGENTS.md"
+
+[required_fields]
+type = ["stdio", "sse", "http"]
+
+[server_extras.canopy]
+enabled = true
+
+[server_extras.filesystem]
+enabled = true
+
+[server_extras.fetch]
+enabled = true
+
+[cli]
+binary = "codebuddy"
+# `-y/--dangerously-skip-permissions` is the yolo flag (HIGH/CRITICAL tools
+# still ask unless the process runs with CODEBUDDY_IS_SANDBOX=1, which canopy
+# does not set); `-p/--print` prints the answer and exits.
+headless_mode = "-y -p"
+interactive_args = ""
+model_flag = "--model"
+# `--add-dir` grants tool access to EXTRA directories; it does not set the
+# working directory. canopy sets the process cwd instead.
+supports_working_dir = false
+yolo_flag = "-y"
+accent_color = [0, 122, 204]
+resume_args = "-c"
+session_resume_cmd = "-r"
+# No `models_list_cmd`: codebuddy has no model-enumeration subcommand. The
+# passable ids are the ones `codebuddy --help` lists for `--model`, verified
+# 2026-09-22: default-model, fast-model, balanced-model, primary-model,
+# deep-model, hy4-preview, hy3, deepseek-v4.1-flash, gpt-6-astra, gpt-5.6-sol,
+# gpt-5.6-terra, gpt-5.6-luna, gpt-5.5, gpt-5.4, gemini-3.5-flash, glm-5.3,
+# glm-5.2, kimi-k3, kimi-k2.6, kimi-k2.8-preview.
+invocation_template = "--model {{model}} --effort {{effort}} {{prompt}}"
+
+[cli.effort_declaration]
+form = "--effort"
+values = ["minimal", "low", "medium", "high", "xhigh", "max"]
