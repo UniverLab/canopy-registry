@@ -1,5 +1,6 @@
 name = "codebuddy"
-display_name = "CodeBuddy Code"
+provider = "Tencent"
+tool_name = "CodeBuddy Code"
 config_path = ".codebuddy.json"
 mcp_servers_key = ["mcpServers"]
 deprecated_keys = []

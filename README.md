@@ -43,7 +43,8 @@ Create `platforms/<name>.toml`:
 
 ```toml
 name = "my-platform"
-display_name = "My Platform"
+provider = "My Company"
+tool_name = "My Platform CLI"
 config_path = ".my-platform/mcp.json"
 mcp_servers_key = ["mcpServers"]
 deprecated_keys = ["task-trigger"]
@@ -75,12 +76,13 @@ binary = "my-platform"
 
 ## Platform fields
 
-`display_name` is the human-readable product name, shown in user interfaces; `name` stays the identifier.
+`name` is the identifier canopy stores in configs and graph nodes — it never changes. `provider` is who makes the CLI and `tool_name` is what the product is called; together they are what a user interface shows (`OpenAI · Codex CLI`).
 
 | Field | Description |
 |-------|-------------|
 | `name` | Platform identifier (slug) |
-| `display_name` | Human-readable product name shown in user interfaces |
+| `provider` | Who makes the CLI (`Anthropic`, `OpenAI`, `Google`…) |
+| `tool_name` | The product's own name (`Claude Code`, `Codex CLI`…) |
 | `config_path` | Path to MCP config file relative to `$HOME` |
 | `config_format` | Config file format: `"json"` (default) or `"toml"` |
 | `toml_array_format` | When `true`, TOML uses `[[section]]` array-of-tables |

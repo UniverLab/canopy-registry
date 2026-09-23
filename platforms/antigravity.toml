@@ -1,5 +1,6 @@
 name = "antigravity"
-display_name = "Antigravity CLI"
+provider = "Google"
+tool_name = "Antigravity CLI"
 config_path = ".gemini/antigravity-cli/mcp_config.json"
 mcp_servers_key = ["mcpServers"]
 deprecated_keys = []

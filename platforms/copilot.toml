@@ -1,5 +1,6 @@
 name = "copilot"
-display_name = "GitHub Copilot CLI"
+provider = "GitHub"
+tool_name = "Copilot CLI"
 config_path = ".copilot/mcp-config.json"
 mcp_servers_key = ["mcpServers"]
 deprecated_keys = ["task-trigger"]

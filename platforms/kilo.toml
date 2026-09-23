@@ -1,5 +1,6 @@
 name = "kilo"
-display_name = "Kilo Code CLI"
+provider = "Kilo Code"
+tool_name = "Kilo Code CLI"
 config_path = ".config/kilo/kilo.json"
 command_format = "merged"
 mcp_servers_key = ["mcp"]

@@ -1,5 +1,6 @@
 name = "devin"
-display_name = "Devin CLI"
+provider = "Cognition"
+tool_name = "Devin CLI"
 config_path = ".config/devin/mcp_config.json"
 mcp_servers_key = ["mcpServers"]
 deprecated_keys = []

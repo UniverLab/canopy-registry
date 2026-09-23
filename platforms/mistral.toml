@@ -1,5 +1,6 @@
 name = "mistral"
-display_name = "Mistral Vibe"
+provider = "Mistral AI"
+tool_name = "Vibe"
 config_path = ".vibe/config.toml"
 config_format = "toml"
 toml_array_format = true

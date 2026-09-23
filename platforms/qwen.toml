@@ -1,5 +1,6 @@
 name = "qwen"
-display_name = "Qwen Code"
+provider = "Alibaba"
+tool_name = "Qwen Code"
 config_path = ".qwen/settings.json"
 mcp_servers_key = ["mcpServers"]
 deprecated_keys = []

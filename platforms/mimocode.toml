@@ -1,5 +1,6 @@
 name = "mimocode"
-display_name = "MiMo Code CLI"
+provider = "Xiaomi"
+tool_name = "MiMo Code CLI"
 config_path = ".claude.json"
 mcp_servers_key = ["mcpServers"]
 deprecated_keys = []

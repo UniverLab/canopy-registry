@@ -1,5 +1,6 @@
 name = "kiro"
-display_name = "Kiro CLI"
+provider = "AWS"
+tool_name = "Kiro CLI"
 config_path = ".kiro/settings/mcp.json"
 mcp_servers_key = ["mcpServers"]
 deprecated_keys = ["task-trigger"]

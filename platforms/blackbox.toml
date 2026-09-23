@@ -1,5 +1,6 @@
 name = "blackbox"
-display_name = "BLACKBOX AI CLI"
+provider = "BLACKBOX AI"
+tool_name = "BLACKBOX AI CLI"
 config_path = ".blackboxcli/settings.json"
 mcp_servers_key = ["mcpServers"]
 deprecated_keys = []

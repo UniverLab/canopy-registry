@@ -1,5 +1,6 @@
 name = "cline"
-display_name = "Cline CLI"
+provider = "Cline"
+tool_name = "Cline CLI"
 config_path = ".cline/data/settings/cline_mcp_settings.json"
 command_format = "merged"
 mcp_servers_key = ["mcpServers"]

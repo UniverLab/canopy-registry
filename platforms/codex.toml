@@ -1,5 +1,6 @@
 name = "codex"
-display_name = "OpenAI Codex CLI"
+provider = "OpenAI"
+tool_name = "Codex CLI"
 config_path = ".codex/config.toml"
 config_format = "toml"
 toml_array_format = false
