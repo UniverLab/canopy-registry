@@ -43,7 +43,7 @@ model_flag = "--model"
 # it does not set the agent's directory. canopy sets the process cwd instead.
 supports_working_dir = false
 yolo_flag = "--permission-mode dangerous"
-accent_color = [64, 110, 255]
+accent_color = [215, 215, 175]
 resume_args = "-c"
 session_list_cmd = "list --format json"
 session_resume_cmd = "-r"

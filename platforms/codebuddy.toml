@@ -32,7 +32,7 @@ model_flag = "--model"
 # working directory. canopy sets the process cwd instead.
 supports_working_dir = false
 yolo_flag = "-y"
-accent_color = [0, 122, 204]
+accent_color = [95, 215, 175]
 resume_args = "-c"
 session_resume_cmd = "-r"
 # No `models_list_cmd`: codebuddy has no model-enumeration subcommand. The
