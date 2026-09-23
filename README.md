@@ -43,6 +43,7 @@ Create `platforms/<name>.toml`:
 
 ```toml
 name = "my-platform"
+display_name = "My Platform"
 config_path = ".my-platform/mcp.json"
 mcp_servers_key = ["mcpServers"]
 deprecated_keys = ["task-trigger"]
@@ -74,9 +75,12 @@ binary = "my-platform"
 
 ## Platform fields
 
+`display_name` is the human-readable product name, shown in user interfaces; `name` stays the identifier.
+
 | Field | Description |
 |-------|-------------|
-| `name` | Display name in the wizard |
+| `name` | Platform identifier (slug) |
+| `display_name` | Human-readable product name shown in user interfaces |
 | `config_path` | Path to MCP config file relative to `$HOME` |
 | `config_format` | Config file format: `"json"` (default) or `"toml"` |
 | `toml_array_format` | When `true`, TOML uses `[[section]]` array-of-tables |

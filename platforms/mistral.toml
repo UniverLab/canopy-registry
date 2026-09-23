@@ -1,4 +1,5 @@
 name = "mistral"
+display_name = "Mistral Vibe"
 config_path = ".vibe/config.toml"
 config_format = "toml"
 toml_array_format = true

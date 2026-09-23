@@ -1,4 +1,5 @@
 name = "continue"
+display_name = "Continue CLI"
 config_path = ".continue/config.json"
 mcp_servers_key = ["mcpServers"]
 deprecated_keys = []

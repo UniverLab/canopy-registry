@@ -1,4 +1,5 @@
 name = "qoder"
+display_name = "Qoder CLI"
 # Verified 2026-08-10 by adding a throwaway user-scope server and observing
 # where it landed: `qoder mcp add -s user …` writes into
 # ~/.qoder/settings.json under `mcpServers`. That file ships with the CLI, so

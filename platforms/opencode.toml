@@ -1,4 +1,5 @@
 name = "opencode"
+display_name = "opencode"
 config_path = ".config/opencode/opencode.json"
 command_format = "merged"
 mcp_servers_key = ["mcp"]
