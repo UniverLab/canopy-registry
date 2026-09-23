@@ -34,7 +34,7 @@ binary = "devin"
 # would stall on the first edit). `--respect-workspace-trust false` is not
 # optional for a loop: print mode cannot show the trust prompt and FAILS in an
 # untrusted directory, which is every fresh worktree.
-headless_mode = "--permission-mode dangerous --respect-workspace-trust false -p"
+headless_mode = "--permission-mode dangerous --respect-workspace-trust false"
 interactive_args = ""
 model_flag = "--model"
 # No working-directory flag: the positional PATH argument opens Devin Desktop,
@@ -58,8 +58,19 @@ session_id_pattern = '"id"\s*:\s*"([^"]+)"'
 # enumeration takes every non-empty line as one passable id, so either form
 # would produce garbage. Model ids are of the form `claude-sonnet-5-high`,
 # `claude-opus-5-5-max`, family aliases (`sonnet`, `fable`) also work.
-invocation_template = "--model {{model}} {{prompt}}"
+# `-p` belongs AFTER `--model`, and the prompt immediately after `-p`: devin
+# declares `-p, --print [<PROMPT>]` with an optional value and also takes
+# `[PATH]...` positionals, so `-p --model X <prompt>` makes the prompt a PATH
+# and the CLI refuses with "the argument '--print [<PROMPT>]' cannot be used
+# with '[PATH]...'". Measured 2026-09-23 through canopy's own probe. Same
+# defect copilot had (see its entry).
+invocation_template = "--model {{model}} -p {{prompt}}"
 
 # No effort form: like opencode v2, devin folds the reasoning level into the
 # model id (`claude-sonnet-5-low|medium|high|xhigh|max`), so effort is chosen
 # by naming the model, not by a separate argument.
+#
+# The account tier also matters: on the free tier an explicit `--model` answers
+# "Upgrade to Pro to access this model" for every id `devin models list` prints,
+# while omitting it uses the account default and works. Leave the model unset
+# unless the account is Pro.
