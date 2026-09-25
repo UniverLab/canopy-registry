@@ -1,4 +1,6 @@
 name = "kiro"
+provider = "AWS"
+tool_name = "Kiro CLI"
 config_path = ".kiro/settings/mcp.json"
 mcp_servers_key = ["mcpServers"]
 deprecated_keys = ["task-trigger"]
@@ -22,3 +24,8 @@ supports_working_dir = false
 yolo_flag = "--trust-all-tools"
 accent_color = [175, 135, 255]
 resume_args = "--resume-picker"
+invocation_template = "--model {{model}} {{prompt}}"
+
+[cli.effort_declaration]
+form = ""
+values = []

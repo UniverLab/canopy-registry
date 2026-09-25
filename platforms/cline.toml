@@ -1,4 +1,6 @@
 name = "cline"
+provider = "Cline"
+tool_name = "Cline CLI"
 config_path = ".cline/data/settings/cline_mcp_settings.json"
 command_format = "merged"
 mcp_servers_key = ["mcpServers"]
@@ -36,3 +38,8 @@ session_list_cmd = "history"
 session_resume_cmd = "--id"
 session_list_format_args = "--json"
 session_id_pattern = '"sessionId"\s*:\s*"([^"]+)"'
+invocation_template = "--thinking {{effort}} -m {{model}} -c {{workdir}} {{prompt}}"
+
+[cli.effort_declaration]
+form = "--thinking"
+values = ["none", "low", "medium", "high", "xhigh"]

@@ -1,4 +1,6 @@
 name = "codex"
+provider = "OpenAI"
+tool_name = "Codex CLI"
 config_path = ".codex/config.toml"
 config_format = "toml"
 toml_array_format = false
@@ -21,3 +23,8 @@ supports_working_dir = true
 working_dir_flag = "-C"
 yolo_flag = "--dangerously-bypass-approvals-and-sandbox"
 accent_color = [87, 199, 195]
+invocation_template = "-m {{model}} -C {{workdir}} -c 'model_reasoning_effort=\"{{effort}}\"' {{prompt}}"
+
+[cli.effort_declaration]
+form = "-c"
+values = ["minimal", "low", "medium", "high", "xhigh"]

@@ -1,4 +1,6 @@
 name = "kilo"
+provider = "Kilo Code"
+tool_name = "Kilo Code CLI"
 config_path = ".config/kilo/kilo.json"
 command_format = "merged"
 mcp_servers_key = ["mcp"]
@@ -47,3 +49,8 @@ session_resume_cmd = "--session"
 #   [ { "id": "ses_094c24b9effe22TCWKl6BDYvSu", "title": "...", ... }, ... ]
 session_list_format_args = "--format json"
 session_id_pattern = '"id"\s*:\s*"([^"]+)"'
+invocation_template = "-m {{model}} {{prompt}}"
+
+[cli.effort_declaration]
+form = ""
+values = []

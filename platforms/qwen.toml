@@ -1,4 +1,6 @@
 name = "qwen"
+provider = "Alibaba"
+tool_name = "Qwen Code"
 config_path = ".qwen/settings.json"
 mcp_servers_key = ["mcpServers"]
 deprecated_keys = []
@@ -34,3 +36,8 @@ resume_args = "--continue"
 session_list_cmd = ""
 session_resume_cmd = "--resume"
 session_id_set_flag = "--session-id"
+invocation_template = "-m {{model}} {{session_flag}} {{session_id}} {{prompt}}"
+
+[cli.effort_declaration]
+form = ""
+values = []

@@ -1,4 +1,6 @@
 name = "cursor"
+provider = "Cursor"
+tool_name = "Cursor CLI"
 config_path = ".cursor/settings.json"
 mcp_servers_key = ["mcpServers"]
 deprecated_keys = []
@@ -33,3 +35,8 @@ accent_color = [0, 150, 136]
 resume_args = "--continue"
 session_list_cmd = ""
 session_resume_cmd = "--resume"
+invocation_template = "{{model}}[context=1m,effort={{effort}},fast=false] --workspace {{workdir}} {{prompt}}"
+
+[cli.effort_declaration]
+form = "embedded_in_model"
+values = ["high"]

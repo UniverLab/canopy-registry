@@ -1,4 +1,6 @@
 name = "blackbox"
+provider = "BLACKBOX AI"
+tool_name = "BLACKBOX AI CLI"
 config_path = ".blackboxcli/settings.json"
 mcp_servers_key = ["mcpServers"]
 deprecated_keys = []
@@ -33,3 +35,8 @@ accent_color = [222, 227, 228]
 resume_args = ""
 session_list_cmd = ""
 session_resume_cmd = ""
+invocation_template = "-p {{prompt}} -m {{model}}"
+
+[cli.effort_declaration]
+form = ""
+values = []

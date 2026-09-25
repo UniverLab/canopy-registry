@@ -1,4 +1,6 @@
 name = "mistral"
+provider = "Mistral AI"
+tool_name = "Vibe"
 config_path = ".vibe/config.toml"
 config_format = "toml"
 toml_array_format = true
@@ -24,3 +26,8 @@ working_dir_flag = "--workdir"
 yolo_flag = "--agent auto-approve"
 accent_color = [251, 133, 1]
 resume_args = "-c"
+invocation_template = "--agent {{model}} --workdir {{workdir}} -p {{prompt}}"
+
+[cli.effort_declaration]
+form = ""
+values = []

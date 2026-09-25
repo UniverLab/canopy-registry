@@ -1,4 +1,6 @@
 name = "opencode"
+provider = "SST"
+tool_name = "opencode"
 config_path = ".config/opencode/opencode.json"
 command_format = "merged"
 mcp_servers_key = ["mcp"]
@@ -24,11 +26,20 @@ enabled = true
 
 [cli]
 binary = "opencode"
-headless_mode = "run --dangerously-skip-permissions"
-interactive_args = ""
+# v2 renamed the permission bypass to `--auto` ("auto-approve permissions that
+# are not explicitly denied") and exposes it on the interactive command too.
+# `--dangerously-skip-permissions` is still accepted by v2.0.12 (unknown flags
+# are rejected outright, so it is honoured, not ignored), but `--auto` is the
+# documented name and the only one the interactive mode takes.
+headless_mode = "run --auto"
+interactive_args = "--auto"
 model_flag = "-m"
-supports_working_dir = true
-working_dir_flag = "--dir"
+# opencode v2 removed `--dir`: `opencode run --dir <path>` answers
+# "Unrecognized flag: --dir in command opencode run" and the run dies before
+# the model is reached. The directory is a positional on the INTERACTIVE
+# command (`opencode [flags] [directory]`), not a flag on `run`, so canopy
+# sets the process cwd instead. Verified 2026-09-22 on opencode v2.0.12.
+supports_working_dir = false
 accent_color = [92, 156, 245]
 resume_args = "-c"
 session_list_cmd = "session list"
@@ -52,3 +63,17 @@ models_list_cmd = "models"
 #   [ { "id": "ses_09391965fffecUt48fWM7DI5Yq", "title": "...", ... }, ... ]
 session_list_format_args = "--format json"
 session_id_pattern = '"id"\s*:\s*"([^"]+)"'
+invocation_template = "-m {{model}} {{prompt}}"
+
+# v2 removed the `--variant` FLAG as well: `opencode run --variant high`
+# answers "Unrecognized flag: --variant in command opencode run". The variant
+# now rides on the model id itself — `--model, -m string  Model to use in the
+# format provider/model#variant` — so effort is declared by naming the model
+# as `opencode/big-pickle#high`, not by a separate argument, and this platform
+# no longer declares an effort form. Verified 2026-09-22 on opencode v2.0.12.
+#
+# An in-token form (`-m {{model}}#{{effort}}`) is NOT usable today: canopy's
+# template engine drops a whole token when any marker in it is unavailable, so
+# a run without effort would lose the model too. A registry that can express
+# "optional marker inside a token" would let this platform declare effort
+# again.

@@ -1,4 +1,6 @@
 name = "copilot"
+provider = "GitHub"
+tool_name = "Copilot CLI"
 config_path = ".copilot/mcp-config.json"
 mcp_servers_key = ["mcpServers"]
 deprecated_keys = ["task-trigger"]
@@ -20,7 +22,7 @@ tools = ["*"]
 
 [cli]
 binary = "copilot"
-headless_mode = "--allow-all -p"
+headless_mode = "--allow-all"
 interactive_args = ""
 model_flag = "--model"
 supports_working_dir = false
@@ -35,3 +37,8 @@ resume_args = "--continue"
 # prompt text and left the uuid and the real prompt as stray positionals,
 # which the CLI reports as "your prompt was not quoted". Resume by id belongs
 # in `session_resume_cmd` (`--resume`) if it is ever wired up.
+invocation_template = "-p {{prompt}} {{session_flag}} {{session_id}} --model {{model}}"
+
+[cli.effort_declaration]
+form = "--effort"
+values = ["none", "minimal", "low", "medium", "high", "xhigh", "max"]

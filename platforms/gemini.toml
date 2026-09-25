@@ -1,4 +1,6 @@
 name = "gemini"
+provider = "Google"
+tool_name = "Gemini CLI"
 config_path = ".gemini/settings.json"
 mcp_servers_key = ["mcpServers"]
 deprecated_keys = []
@@ -16,17 +18,20 @@ binary = "gemini"
 # after these flags, `-p` has to be LAST or it swallows the next flag as its
 # value. `--skip-trust` is required because a headless run in an untrusted
 # directory exits 55 rather than prompting.
-headless_mode = "--skip-trust -p"
+headless_mode = "--skip-trust"
 interactive_args = ""
 model_flag = "--model"
 # `--cwd` does not exist either; gemini has no working-directory flag (only
 # `--include-directories`, which adds to the workspace rather than moving it).
 supports_working_dir = false
 yolo_flag = "--yolo"
+session_id_set_flag = "--session-id"
 accent_color = [192, 158, 228]
 resume_args = "--resume"
-# No `session_id_set_flag`, even though `--session-id` exists and does name a
-# new session here. The engine injects the session flag between the headless
-# flags and the prompt, and `-p` must be immediately followed by the prompt —
-# so declaring it would produce `-p --session-id <uuid> <prompt>` and the
-# prompt slot would be eaten by the flag. Same shape as the copilot bug.
+# Restored `session_id_set_flag` — template controls argv order so `-p` is
+# immediately followed by the prompt: `{{session_flag}} {{session_id}} -p {{prompt}}`.
+invocation_template = "{{session_flag}} {{session_id}} -p {{prompt}} --model {{model}}"
+
+[cli.effort_declaration]
+form = ""
+values = []

@@ -1,4 +1,6 @@
 name = "qoder"
+provider = "Alibaba"
+tool_name = "Qoder CLI"
 # Verified 2026-08-10 by adding a throwaway user-scope server and observing
 # where it landed: `qoder mcp add -s user …` writes into
 # ~/.qoder/settings.json under `mcpServers`. That file ships with the CLI, so
@@ -31,3 +33,8 @@ resume_args = "--continue"
 session_id_set_flag = "--session-id"
 session_resume_cmd = "--resume"
 session_list_cmd = "--list-sessions"
+invocation_template = "-m {{model}} --cwd {{workdir}} {{session_flag}} {{session_id}} {{prompt}}"
+
+[cli.effort_declaration]
+form = ""
+values = []
