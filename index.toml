@@ -71,3 +71,15 @@ binary = "devin"
 [[platforms]]
 name = "codebuddy"
 binary = "codebuddy"
+
+[[platforms]]
+name = "commandcode"
+binary = "command-code"
+
+[[platforms]]
+name = "freebuff"
+binary = "freebuff"
+
+[[platforms]]
+name = "utim"
+binary = "utim"
