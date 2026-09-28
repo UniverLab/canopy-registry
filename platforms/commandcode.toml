@@ -1,0 +1,52 @@
+name = "commandcode"
+provider = "Command Code"
+tool_name = "Command Code"
+# User-scope MCP config (`command-code mcp add -s user`); the default scope
+# `local` writes ~/.commandcode/projects/<dir>/mcp.json instead. Verified
+# 2026-09-28 by adding and removing a probe server in each scope.
+config_path = ".commandcode/mcp.json"
+mcp_servers_key = ["mcpServers"]
+deprecated_keys = []
+unsupported_keys = ["autoApprove", "disabled", "tools"]
+skills_dir = ".agents/skills"
+instruction_file = "AGENTS.md"
+
+# Entries use `transport`, not `type`: `{"transport": "stdio", "enabled": true,
+# "command": ..., "args": [...]}` as `command-code mcp add` writes them.
+[required_fields]
+transport = ["stdio", "http"]
+
+[server_extras.canopy]
+enabled = true
+
+[server_extras.filesystem]
+enabled = true
+
+[server_extras.fetch]
+enabled = true
+
+[cli]
+binary = "command-code"
+# `--yolo` bypasses every permission prompt; `-p/--print` runs one turn and
+# exits. Verified 2026-09-28 (v1.66.0):
+#   command-code --yolo -p --model deepseek/deepseek-v4-flash "…"  → exit 0
+headless_mode = "--yolo -p"
+interactive_args = ""
+model_flag = "--model"
+# No --cwd flag (`--add-dir` only widens tool access); canopy sets the cwd.
+supports_working_dir = false
+yolo_flag = "--yolo"
+accent_color = [175, 215, 255]
+resume_args = "-c"
+session_resume_cmd = "-r"
+# `--list-models` prints `<id>  <description>` rows under section headings
+# (82 models on 2026-09-28, default deepseek/deepseek-v4-flash); not wired as
+# models_list_cmd until canopy parses that shape.
+invocation_template = "--model {{model}} {{prompt}}"
+
+# `--effort` exists but its accepted values depend on the model: for
+# deepseek/deepseek-v4-flash it rejects `low` ("Supported: high, max") and
+# exits 1. Declared as unsupported so canopy never passes a value that fails.
+[cli.effort_declaration]
+form = ""
+values = []

@@ -1,0 +1,33 @@
+name = "freebuff"
+provider = "Codebuff"
+tool_name = "Freebuff"
+# Freebuff loads MCP servers from `.agents/mcp.json` in the cwd, its parent,
+# and the home directory (read from the bundled CLI, 2026-09-28); the home one
+# is the only global location.
+config_path = ".agents/mcp.json"
+mcp_servers_key = ["mcpServers"]
+deprecated_keys = []
+unsupported_keys = ["autoApprove", "disabled", "tools", "type"]
+skills_dir = ".agents/skills"
+instruction_file = "knowledge.md"
+
+[cli]
+binary = "freebuff"
+# INTERACTIVE ONLY. v0.1.2 has no print/headless mode: `--print`, `--headless`
+# and `-p` are all "unknown option", and the only positional is the `login`
+# command. Free ("sponsored") runs also restrict tools to an allowlist, so MCP
+# tools are not guaranteed. Kept for live sessions; an empty headless_mode
+# makes a graph node fail fast instead of opening a TUI.
+headless_mode = ""
+interactive_args = ""
+model_flag = ""
+supports_working_dir = true
+working_dir_flag = "--cwd"
+yolo_flag = ""
+accent_color = [158, 252, 98]
+resume_args = "--continue"
+invocation_template = "{{prompt}}"
+
+[cli.effort_declaration]
+form = ""
+values = []

@@ -1,0 +1,37 @@
+name = "utim"
+provider = "Emend AI"
+tool_name = "UTIM"
+# Global MCP config, created by the CLI as {"mcpServers": {}}
+# (utim_cli/mcp_client.py). Entries are read as command/args/env only: stdio.
+config_path = ".utim/mcp.json"
+mcp_servers_key = ["mcpServers"]
+deprecated_keys = []
+unsupported_keys = ["autoApprove", "disabled", "tools", "type", "url", "headers"]
+skills_dir = ".agents/skills"
+# Project instruction file not confirmed; the CLI's own manual lives in
+# ~/.utim/UTIM.md and its bootstrap falls back to AGENTS.md.
+instruction_file = "AGENTS.md"
+
+[cli]
+binary = "utim"
+# Installed as a Python tool: the npm wrapper (@emend-ai/utim) pip-installs
+# `utim-cli` into the system Python, which Debian/Ubuntu refuse (PEP 668).
+# Working install, 2026-09-28: `uv tool install utim-cli --with colorama`.
+# `--headless -p` runs one task and exits; verified 2026-09-28 on the free
+# plan (default model Atria-Dawn-Preview): exit 0, answer on stdout.
+headless_mode = "--headless"
+interactive_args = ""
+model_flag = "-m"
+supports_working_dir = false
+yolo_flag = ""
+accent_color = [95, 175, 255]
+# CAUTION: an unknown model id is not an error — utim silently answers with
+# its default model (`-m no-such-model` → exit 0, normal reply). A probe
+# cannot detect the substitution from the output.
+invocation_template = "-m {{model}} -p {{prompt}}"
+
+# Reasoning effort is a per-model setting stored in ~/.utim/config.json
+# (`/modelsettings`), not a CLI flag.
+[cli.effort_declaration]
+form = ""
+values = []
