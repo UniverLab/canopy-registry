@@ -26,7 +26,7 @@ enabled = true
 
 [cli]
 binary = "agy"
-headless_mode = "--dangerously-skip-permissions --print-timeout 24h -p"
+headless_mode = "--dangerously-skip-permissions --print-timeout 24h"
 interactive_args = ""
 model_flag = "--model"
 supports_working_dir = true
@@ -36,7 +36,7 @@ accent_color = [138, 180, 248]
 resume_args = "--continue"
 session_list_cmd = ""
 session_resume_cmd = "--conversation"
-invocation_template = "-p {{prompt}} --model {{model}} --effort {{effort}} --add-dir {{workdir}}"
+invocation_template = "-p={{prompt}} --model {{model}} --effort {{effort}} --add-dir {{workdir}}"
 
 [cli.effort_declaration]
 form = "--effort"
