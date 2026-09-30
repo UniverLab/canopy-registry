@@ -7,6 +7,8 @@ deprecated_keys = ["task-trigger"]
 unsupported_keys = ["headers"]
 skills_dir = ".kiro/skills"
 instruction_file = "AGENTS.md"
+# Paths the harness creates inside a project (checked 2026-09-30): steering/, specs/, agents/, settings/mcp.json (kiro.dev/docs/configuration).
+project_paths = [".kiro/"]
 
 [required_fields]
 type = ["stdio"]

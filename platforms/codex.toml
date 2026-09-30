@@ -9,6 +9,10 @@ deprecated_keys = []
 unsupported_keys = ["headers"]
 skills_dir = ".agents/skills"
 instruction_file = "AGENTS.md"
+# Paths the harness creates inside a project (checked 2026-09-30): project config.toml (developers.openai.com/codex/config-basic).
+project_paths = [".codex/"]
+# Codex prefers AGENTS.override.md over AGENTS.md at the same level.
+instruction_precedence = ["AGENTS.override.md"]
 
 [required_fields]
 type = ["stdio"]

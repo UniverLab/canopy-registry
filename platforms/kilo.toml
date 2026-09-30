@@ -8,6 +8,8 @@ deprecated_keys = []
 unsupported_keys = ["autoApprove", "disabled", "tools", "headers"]
 skills_dir = ".agents/skills"
 instruction_file = "AGENTS.md"
+# Paths the harness creates inside a project (checked 2026-09-30): .kilo/ and kilo.jsonc since the 2026 rebuild; .kilocode/ kept for older projects (kilo.ai/docs).
+project_paths = [".kilo/", ".kilocode/", "kilo.json", "kilo.jsonc"]
 
 [fields_mapping]
 env = "environment"

@@ -12,6 +12,10 @@ skills_dir = ".claude/skills"
 # (https://code.claude.com/docs/en/memory#agents-md). AGENTS.md is the file
 # every other harness in this registry shares, so it is the one declared here.
 instruction_file = "AGENTS.md"
+# Paths the harness creates inside a project (checked 2026-09-30): .claude/ tree, project MCP file, personal instructions (code.claude.com/docs/en/claude-directory).
+project_paths = [".claude/", ".mcp.json", "CLAUDE.local.md"]
+# Files Claude reads INSTEAD of AGENTS.md when present, in order.
+instruction_precedence = ["CLAUDE.md", ".claude/CLAUDE.md", "CLAUDE.local.md"]
 
 [required_fields]
 type = ["stdio", "http"]

@@ -8,6 +8,8 @@ deprecated_keys = ["task-trigger"]
 unsupported_keys = ["autoApprove", "disabled", "tools", "headers"]
 skills_dir = ".agents/skills"
 instruction_file = "AGENTS.md"
+# Paths the harness creates inside a project (checked 2026-09-30): .opencode/ agents, commands, plugins; root config (opencode.ai/docs/config).
+project_paths = [".opencode/", "opencode.json", "opencode.jsonc"]
 
 [fields_mapping]
 env = "environment"

@@ -9,6 +9,8 @@ deprecated_keys = []
 unsupported_keys = ["headers"]
 skills_dir = ".vibe/skills"
 instruction_file = "AGENTS.md"
+# Paths the harness creates inside a project (checked 2026-09-30): project tools, skills, agents, prompts, hooks (docs.mistral.ai/vibe).
+project_paths = [".vibe/"]
 
 [fields_mapping]
 type = "transport"
