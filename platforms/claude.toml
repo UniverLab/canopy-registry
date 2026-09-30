@@ -6,7 +6,12 @@ mcp_servers_key = ["mcpServers"]
 deprecated_keys = []
 unsupported_keys = ["autoApprove", "disabled", "tools"]
 skills_dir = ".claude/skills"
-instruction_file = "CLAUDE.md"
+# Claude Code reads AGENTS.md natively since v2.1.277 (2026-09-18), as a
+# fallback: a CLAUDE.md, .claude/CLAUDE.md or CLAUDE.local.md in the working
+# directory or above it takes precedence and AGENTS.md is then ignored
+# (https://code.claude.com/docs/en/memory#agents-md). AGENTS.md is the file
+# every other harness in this registry shares, so it is the one declared here.
+instruction_file = "AGENTS.md"
 
 [required_fields]
 type = ["stdio", "http"]
