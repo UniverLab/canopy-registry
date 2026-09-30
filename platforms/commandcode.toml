@@ -10,6 +10,8 @@ deprecated_keys = []
 unsupported_keys = ["autoApprove", "disabled", "tools"]
 skills_dir = ".agents/skills"
 instruction_file = "AGENTS.md"
+# Paths the harness creates inside a project (checked 2026-09-30): taste/, skills/, memory/ (commandcode.ai/docs/taste).
+project_paths = [".commandcode/"]
 
 # Entries use `transport`, not `type`: `{"transport": "stdio", "enabled": true,
 # "command": ..., "args": [...]}` as `command-code mcp add` writes them.

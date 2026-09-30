@@ -10,6 +10,8 @@ deprecated_keys = []
 unsupported_keys = ["autoApprove", "disabled", "tools", "type"]
 skills_dir = ".agents/skills"
 instruction_file = "knowledge.md"
+# Paths the harness creates inside a project (checked 2026-09-30): .agents/mcp.json and agent definitions.
+project_paths = [".agents/"]
 
 [cli]
 binary = "freebuff"

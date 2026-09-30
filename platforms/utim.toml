@@ -11,6 +11,8 @@ skills_dir = ".agents/skills"
 # Project instruction file not confirmed; the CLI's own manual lives in
 # ~/.utim/UTIM.md and its bootstrap falls back to AGENTS.md.
 instruction_file = "AGENTS.md"
+# Paths the harness creates inside a project (checked 2026-09-30): config, memory and session state, vector DB (docs.utim.dev).
+project_paths = [".utim/", ".utim_tmp/"]
 
 [cli]
 binary = "utim"

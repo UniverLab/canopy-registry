@@ -13,6 +13,8 @@ deprecated_keys = []
 unsupported_keys = ["autoApprove", "disabled", "tools"]
 skills_dir = ".qoder/skills"
 instruction_file = "AGENTS.md"
+# Paths the harness creates inside a project (checked 2026-09-30): rules/, commands/, agents/, skills/ (docs.qoder.com/user-guide/rules).
+project_paths = [".qoder/"]
 
 [required_fields]
 type = ["stdio", "http"]

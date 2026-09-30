@@ -7,6 +7,8 @@ deprecated_keys = []
 unsupported_keys = ["autoApprove", "disabled", "tools", "headers"]
 skills_dir = ".agents/skills"
 instruction_file = "AGENTS.md"
+# Paths the harness creates inside a project (checked 2026-09-30): config.json, config.local.json, rules/, skills/, agents/ (docs.devin.ai/cli/extensibility).
+project_paths = [".devin/"]
 
 # `devin mcp add` writes `"transport": "stdio"`, not `"type"`. Verified
 # 2026-09-22 by adding a throwaway stdio server at user scope:

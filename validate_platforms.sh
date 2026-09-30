@@ -89,6 +89,21 @@ for pfile in "$PLATFORMS_DIR"/*.toml; do
     fi
 done
 
+# Every platform declares the paths it creates inside a project (gitkit's
+# `agentic` .gitignore is built from them). `.github` and `.config` are shared
+# directories and are never a harness project path.
+echo "Checking project_paths..."
+for f in "$PLATFORMS_DIR"/*.toml; do
+    n="$(basename "$f" .toml)"
+    if ! grep -q '^project_paths = \[' "$f"; then
+        echo "ERROR: $n: missing project_paths"
+        errors=$((errors + 1))
+    elif grep '^project_paths = ' "$f" | grep -qE '"\.(github|config)(/[^"]*)?"'; then
+        echo "ERROR: $n: project_paths lists .github or .config"
+        errors=$((errors + 1))
+    fi
+done
+
 # Validate servers.toml has at least canopy
 if grep -q '^\[servers\.canopy\]' "$SERVERS_TOML"; then
     echo "✓ servers.toml has canopy server"

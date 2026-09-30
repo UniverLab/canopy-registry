@@ -7,6 +7,8 @@ deprecated_keys = []
 unsupported_keys = ["autoApprove", "disabled", "tools", "headers"]
 skills_dir = ".agents/skills"
 instruction_file = ".cursor/rules"
+# Paths the harness creates inside a project (checked 2026-09-30): rules/ plus the two ignore files.
+project_paths = [".cursor/", ".cursorignore", ".cursorindexingignore"]
 
 [fields_mapping]
 env = "environment"
