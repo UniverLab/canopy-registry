@@ -40,11 +40,18 @@ supports_working_dir = false
 yolo_flag = "--yolo"
 accent_color = [175, 215, 255]
 resume_args = "-c"
+# Session resume (RS1/RS2). command-code has no --session-id, but `--name`
+# sets a caller-chosen session name and `-r <name>` resumes it by that name.
+# canopy mints a UUID and passes it as the name, then resumes with it.
+# Verified 2026-10-09 (v1.79.2), headless with `--yolo -p`:
+#   --name <uuid> "Remember 4471…" → OK; -r <uuid> "Which number?" → 4471
+#   -r <unknown> → `No session "…" found to resume.`, exit 1 (no picker)
 session_resume_cmd = "-r"
+session_id_set_flag = "--name"
 # `--list-models` prints `<id>  <description>` rows under section headings
 # (82 models on 2026-09-28, default deepseek/deepseek-v4-flash); not wired as
 # models_list_cmd until canopy parses that shape.
-invocation_template = "--model {{model}} {{prompt}}"
+invocation_template = "--model {{model}} {{session_flag}} {{session_id}} {{prompt}}"
 
 # `--effort` exists but its accepted values depend on the model: for
 # deepseek/deepseek-v4-flash it rejects `low` ("Supported: high, max") and
