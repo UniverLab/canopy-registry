@@ -61,6 +61,14 @@ for pfile in "$PLATFORMS_DIR"/*.toml; do
         errors=$((errors + 1))
     fi
 
+    # An empty headless_mode is only legal for a platform that declares itself
+    # interactive-only (`headless = false`); otherwise a graph node would be
+    # offered a platform with no way to run headlessly.
+    if grep -q '^headless_mode = ""' "$pfile" && ! grep -q '^headless = false' "$pfile"; then
+        echo "  ERROR: $pname has empty headless_mode without headless = false"
+        errors=$((errors + 1))
+    fi
+
     # Verify name matches filename
     file_name=$(grep '^name = ' "$pfile" | head -1 | sed 's/name = "\(.*\)"/\1/')
     if [ "$file_name" = "$pname" ]; then

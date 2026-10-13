@@ -18,9 +18,12 @@ binary = "freebuff"
 # INTERACTIVE ONLY. v0.1.2 has no print/headless mode: `--print`, `--headless`
 # and `-p` are all "unknown option", and the only positional is the `login`
 # command. Free ("sponsored") runs also restrict tools to an allowlist, so MCP
-# tools are not guaranteed. Kept for live sessions; an empty headless_mode
-# makes a graph node fail fast instead of opening a TUI.
+# tools are not guaranteed. Kept for live sessions; `headless = false` marks it
+# interactive-only so canopy never offers it to a graph node, an ensemble
+# member, an agent, or a probe, and an empty headless_mode is legal only
+# alongside it (validate_platforms.sh).
 headless_mode = ""
+headless = false
 interactive_args = ""
 model_flag = ""
 supports_working_dir = true
