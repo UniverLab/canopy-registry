@@ -35,6 +35,9 @@ binary = "opencode"
 # documented name and the only one the interactive mode takes.
 headless_mode = "run --auto"
 interactive_args = "--auto"
+# A single Ctrl+C exits the opencode TUI. canopy arms the first press and
+# forwards it only on a second press within a second (CT26).
+ctrl_c_exits = true
 model_flag = "-m"
 # opencode v2 removed `--dir`: `opencode run --dir <path>` answers
 # "Unrecognized flag: --dir in command opencode run" and the run dies before
