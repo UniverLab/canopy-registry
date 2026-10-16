@@ -69,6 +69,17 @@ models_list_cmd = "models"
 session_list_format_args = "--format json"
 session_id_pattern = '"id"\s*:\s*"([^"]+)"'
 invocation_template = "-m {{model}} {{prompt}}"
+# A terminated node must also end its session: opencode v2 runs the agent loop
+# inside `opencode serve --service`, so killing the `opencode run` client
+# leaves the session editing the repo (2026-10-16: a timed-out node committed
+# 40 minutes later). canopy titles each headless run `canopy-<run_id>`, finds
+# it by title in the session list (scoped to the cwd), and interrupts it by id.
+# Verified on opencode v2.0.16:
+#   $ opencode run --help        → --title string  Session title
+#   $ opencode api session.interrupt --param sessionID=<id>  → {"interrupted":true}
+session_title_flag = "--title"
+session_list_args = ["session", "list", "--format", "json"]
+session_end_args = ["api", "session.interrupt", "--param", "sessionID={session_id}"]
 
 # v2 removed the `--variant` FLAG as well: `opencode run --variant high`
 # answers "Unrecognized flag: --variant in command opencode run". The variant
