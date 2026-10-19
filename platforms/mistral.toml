@@ -20,7 +20,13 @@ transport = ["stdio", "http"]
 
 [cli]
 binary = "vibe"
-headless_mode = "-p"
+# The template already carries `-p {{prompt}}`, and canopy prepends
+# headless_mode to every templated argv, so a `-p` here doubles it: vibe
+# answers "the argument '--prompt [<PROMPT>]' cannot be used multiple times"
+# and the run dies. `-p` must be followed by the prompt itself ("No prompt
+# provided for programmatic mode" otherwise), so it lives in the template only.
+# Verified 2026-10-19 with agent_probe (mistral/auto-approve: reachable).
+headless_mode = ""
 interactive_args = ""
 model_flag = "--agent"
 supports_working_dir = true
