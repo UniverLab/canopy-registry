@@ -32,7 +32,12 @@ binary = "command-code"
 # `--yolo` bypasses every permission prompt; `-p/--print` runs one turn and
 # exits. Verified 2026-09-28 (v1.66.0):
 #   command-code --yolo -p --model deepseek/deepseek-v4-flash "…"  → exit 0
-headless_mode = "--yolo -p"
+# `-p` mode caps a run at 100 conversation turns by default and exits 8 on
+# the cap ("Reached maximum conversation turns (100)"). A graph Implementer on
+# a large spec needs more: on 2026-10-20 laguna-s-2.1 hit the cap right after
+# "All 6621 tests pass. Now let me run clippy and fmt." and its work went
+# unreported. 400 leaves room; the node timeout still bounds the run.
+headless_mode = "--yolo --max-turns 400 -p"
 interactive_args = ""
 model_flag = "--model"
 # No --cwd flag (`--add-dir` only widens tool access); canopy sets the cwd.
