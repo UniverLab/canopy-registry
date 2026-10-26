@@ -61,11 +61,13 @@ for pfile in "$PLATFORMS_DIR"/*.toml; do
         errors=$((errors + 1))
     fi
 
-    # An empty headless_mode is only legal for a platform that declares itself
-    # interactive-only (`headless = false`); otherwise a graph node would be
-    # offered a platform with no way to run headlessly.
-    if grep -q '^headless_mode = ""' "$pfile" && ! grep -q '^headless = false' "$pfile"; then
-        echo "  ERROR: $pname has empty headless_mode without headless = false"
+    # An empty headless_mode must say which of two things it means: the
+    # platform is interactive-only (`headless = false`), or its headless flag
+    # already rides in invocation_template (`headless = true`, e.g. mistral's
+    # `-p {{prompt}}`). Left undeclared, a graph node could be offered a
+    # platform with no way to run headlessly.
+    if grep -q '^headless_mode = ""' "$pfile" && ! grep -qE '^headless = (false|true)' "$pfile"; then
+        echo "  ERROR: $pname has empty headless_mode without an explicit headless = false|true"
         errors=$((errors + 1))
     fi
 

@@ -27,6 +27,9 @@ binary = "vibe"
 # provided for programmatic mode" otherwise), so it lives in the template only.
 # Verified 2026-10-19 with agent_probe (mistral/auto-approve: reachable).
 headless_mode = ""
+# Headless all the same: the template carries -p. Declared explicitly so the
+# empty headless_mode above is not read as an interactive-only platform.
+headless = true
 interactive_args = ""
 model_flag = "--agent"
 supports_working_dir = true
