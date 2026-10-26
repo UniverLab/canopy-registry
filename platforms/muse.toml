@@ -1,0 +1,43 @@
+name = "muse"
+provider = "Meta"
+tool_name = "Muse Code"
+# Global MCP config: mcpServers lives in settings.json (muse mcp --help).
+# Verified 2026-10-26 on 1.4.13: {command, args} and {transport, command,
+# args, env} entries parse with no error; schema_version = 1 required.
+config_path = ".config/muse/settings.json"
+mcp_servers_key = ["mcpServers"]
+deprecated_keys = []
+unsupported_keys = ["autoApprove", "disabled", "tools", "type"]
+skills_dir = ".config/muse/skills"
+# `muse init` scaffolds this file as project rules (verified 2026-10-26).
+instruction_file = "AGENTS.md"
+# Paths the harness creates inside a project (checked 2026-10-26): session
+# worktree state under .muse/worktrees/. `muse init` also writes AGENTS.md,
+# which is committed, not ignored. Project skills are read from
+# .agents/skills/ but only user-scope install exists, so .agents/ is not
+# harness-created.
+project_paths = [".muse/"]
+
+[required_fields]
+transport = ["stdio"]
+
+[cli]
+binary = "muse"
+# `exec` runs one prompt and exits; --yolo disables approval+sandbox and
+# trusts the workspace (muse exec --help). Prompt is positional.
+headless_mode = "exec --yolo"
+interactive_args = ""
+resume_args = "resume --last"
+model_flag = "--model"
+supports_working_dir = true
+working_dir_flag = "--workspace"
+yolo_flag = "--yolo"
+accent_color = [90, 160, 255] 
+session_id_set_flag = "--session-id"
+# Resume by exact UUID or session name; bare `resume` opens a picker (TUI).
+session_resume_cmd = "resume"
+invocation_template = "--effort {{effort}} --model {{model}} --workspace {{workdir}} {{session_flag}} {{session_id}} {{prompt}}"
+
+[cli.effort_declaration]
+form = "--effort"
+values = ["none", "minimal", "low", "medium", "high", "xhigh", "max", "ultra"]

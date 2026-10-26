@@ -83,3 +83,7 @@ binary = "freebuff"
 [[platforms]]
 name = "utim"
 binary = "utim"
+
+[[platforms]]
+name = "muse"
+binary = "muse"
