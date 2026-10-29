@@ -1,7 +1,7 @@
 name = "cursor"
 provider = "Cursor"
 tool_name = "Cursor CLI"
-config_path = ".cursor/settings.json"
+config_path = ".cursor/mcp.json"
 mcp_servers_key = ["mcpServers"]
 deprecated_keys = []
 unsupported_keys = ["autoApprove", "disabled", "tools", "headers"]
