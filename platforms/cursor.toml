@@ -10,11 +10,10 @@ instruction_file = ".cursor/rules"
 # Paths the harness creates inside a project (checked 2026-09-30): rules/ plus the two ignore files.
 project_paths = [".cursor/", ".cursorignore", ".cursorindexingignore"]
 
-[fields_mapping]
-env = "environment"
-
+# Cursor drops every server whose type is "local" ("No MCP servers configured", checked 2026-10-29),
+# and reads env vars from `env`, so neither is remapped.
 [required_fields]
-type = ["stdio", "local"]
+type = ["stdio"]
 
 [server_extras.canopy]
 enabled = true
