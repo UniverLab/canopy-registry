@@ -1,8 +1,26 @@
-# canopy-registry
+<p align="center">
+  <img src="https://raw.githubusercontent.com/UniverLab/.github/main/assets/banner-canopy-registry.svg" alt="Canopy Registry"/>
+</p>
 
-Platform registry for [agent-canopy](https://github.com/UniverLab/agent-canopy) setup wizard.
+<p align="center">
+  <a href="https://github.com/UniverLab/harness-canopy"><img src="https://img.shields.io/badge/Canopy-harness--canopy-3CC7BD?style=for-the-badge" alt="Canopy"/></a>
+  <img src="https://img.shields.io/badge/format-TOML-9C4221?style=for-the-badge" alt="TOML"/>
+  <img src="https://img.shields.io/badge/Status-Active-27AE60?style=for-the-badge" alt="Status"/>
+</p>
 
-Defines supported MCP client platforms, canonical MCP server definitions, and per-platform translation rules so `canopy setup` can automatically configure them all.
+<p align="center">
+  <a href="https://univerlab.org/canopy/">Canopy</a> ·
+  <a href="https://univerlab.org/canopy/docs/installation/">Installation</a> ·
+  <a href="https://graphs.univerlab.org">Graphs catalogue</a>
+</p>
+
+The platform registry behind [Canopy](https://github.com/UniverLab/harness-canopy)'s
+setup wizard: the MCP clients it supports, one canonical definition of each MCP
+server, and the rules that translate those definitions into every client's own
+config format. `canopy setup` reads it, so a new platform lands here without a
+Canopy release.
+
+---
 
 ## Structure (v6)
 
