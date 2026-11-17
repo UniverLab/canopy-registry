@@ -113,6 +113,7 @@ binary = "my-platform"
 | `server_extras` | Per-server extra fields merged into the adapted config (e.g. `[server_extras.canopy] tools = ["*"]`) |
 | `skills_dir` | Platform's skills directory relative to `$HOME` |
 | `instruction_file` | The instruction file the harness reads at the project root (e.g. `AGENTS.md`) |
+| `user_instruction_file` | Optional. The plain markdown file the harness loads as personal instructions in **every** project, as a path relative to the home directory (e.g. `.claude/CLAUDE.md`). Canopy appends its line only if the file already exists |
 | `project_paths` | Directories (trailing `/`) and root files the harness creates **inside a project**, e.g. `[".kilo/", "kilo.jsonc"]`. Required. Never `.github` or `.config` (shared directories). gitkit's `agentic` .gitignore is built from these |
 | `instruction_precedence` | Optional. Files the harness reads **instead of** `instruction_file` when they exist, in order (e.g. claude: `["CLAUDE.md", ".claude/CLAUDE.md", "CLAUDE.local.md"]`). Canopy amends the first existing one when it writes its protocol into a sandbox |
 | `cli` | CLI strategy definition for headless/interactive execution |

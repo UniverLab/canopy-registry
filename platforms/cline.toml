@@ -8,6 +8,8 @@ deprecated_keys = []
 unsupported_keys = ["autoApprove", "disabled", "tools", "headers"]
 skills_dir = ".agents/skills"
 instruction_file = ".clinerules"
+# Personal instructions every session loads, home-relative (checked 2026-11-17): https://docs.cline.bot/features/cline-rules/overview
+user_instruction_file = ".agents/AGENTS.md"
 # Paths the harness creates inside a project (checked 2026-09-30): CLI hooks dir and ignore file; .clinerules is the instruction file (docs.cline.bot).
 project_paths = [".cline/", ".clineignore"]
 
