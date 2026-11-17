@@ -1,0 +1,72 @@
+name = "grok"
+# xAI's Grok CLI: the `grok` binary. Name confirmed from `grok --help`
+# ("Grok Build TUI") and the bundled user guide (~/.grok/docs); version 1.0.88.
+provider = "xAI"
+tool_name = "Grok Build"
+# Global MCP config: ~/.grok/config.toml, [mcp_servers.<name>] tables
+# (bundled user guide ~/.grok/README.md "MCP Servers", checked 2026-11-17).
+config_path = ".grok/config.toml"
+config_format = "toml"
+# Servers are written as [mcp_servers.<name>] sub-tables, not [[...]] arrays.
+toml_array_format = false
+mcp_servers_key = ["mcp_servers"]
+deprecated_keys = []
+# Not in the documented per-server schema (command, args, env, headers, enabled,
+# startup_timeout_sec, tool_timeout_sec, tool_timeouts, url), checked 2026-11-17:
+# grok turns a server off with `enabled`, not `disabled`; it has no per-server
+# auto-approve or tool-list keys; transport is inferred from command vs url, so
+# there is no `type` key.
+unsupported_keys = ["autoApprove", "disabled", "tools", "type"]
+# User-scoped skills live in ~/.grok/skills/<name>/SKILL.md (bundled user guide,
+# "Skills" section and file table, checked 2026-11-17).
+skills_dir = ".grok/skills"
+# Grok reads AGENTS.md from each directory from the repo root down to the cwd
+# (bundled user guide, "AGENTS.md" section, checked 2026-11-17).
+instruction_file = "AGENTS.md"
+# Global rules for every project: ~/.grok/AGENTS.md (bundled user guide,
+# 01-getting-started.md file table, checked 2026-11-17). Grok also reads
+# ~/.claude/CLAUDE.md while Claude compatibility is on (12-project-rules.md).
+user_instruction_file = ".grok/AGENTS.md"
+# Grok loads every matching file per directory (AGENTS.md, CLAUDE.md, ...),
+# none replaces another, so no instruction_precedence (12-project-rules.md).
+# Paths the harness creates inside a project (checked 2026-11-17): project
+# config, skills, plugins, agents and hooks under .grok/ (bundled user guide,
+# file table). AGENTS.md is a committed file, not a harness path.
+project_paths = [".grok/"]
+
+[cli]
+binary = "grok"
+# Neutral silver for the TUI: xAI's mark is monochrome (orchestrator's choice).
+accent_color = [200, 200, 210]
+# `-p` (--single) takes the prompt as its value, so it must sit directly before
+# {{prompt}}. canopy prepends headless_mode to every templated argv, so the
+# permission bypass goes here and `-p` lives in the template (same split as
+# mistral). `--always-approve` = "Auto-approve all tool executions" (grok --help).
+headless_mode = "--always-approve"
+# Plain `grok` opens the TUI. No extra flags are declared for it, matching
+# claude and codex (grok --help, checked 2026-11-17).
+interactive_args = ""
+# `-m, --model <MODEL>` (grok --help, checked 2026-11-17).
+model_flag = "-m"
+# `--cwd <CWD>  Working directory` (grok --help, checked 2026-11-17).
+supports_working_dir = true
+working_dir_flag = "--cwd"
+# Skips tool-approval prompts (grok --help, `--always-approve`).
+yolo_flag = "--always-approve"
+# Continue the most recent session for the cwd: `-c, --continue` (grok --help).
+resume_args = "--continue"
+# Set-at-spawn id, headless only: `-s, --session-id <SESSION_ID>` creates or
+# resumes a headless session with that id (bundled user guide, "Headless Mode").
+session_id_set_flag = "--session-id"
+# Headless resume by id: `grok -p "..." --resume <sessionId>` (bundled user guide,
+# "Headless Mode"; `-r, --resume <SESSION_ID_OR_TITLE>` in grok --help).
+session_resume_cmd = "--resume"
+invocation_template = "-m {{model}} --reasoning-effort {{effort}} --cwd {{workdir}} {{session_flag}} {{session_id}} -p {{prompt}}"
+
+[cli.effort_declaration]
+# `--reasoning-effort <EFFORT>`, alias `--effort` (grok --help and bundled user
+# guide, "Headless Mode" options table, checked 2026-11-17). The per-model
+# menu ids (e.g. `deep`) are left out: `grok models` lists only grok-4.7 with no
+# variants.
+form = "--reasoning-effort"
+values = ["none", "minimal", "low", "medium", "high", "xhigh", "max"]
