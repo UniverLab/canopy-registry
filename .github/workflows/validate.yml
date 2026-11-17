@@ -1,0 +1,42 @@
+name: Validate
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Validate registry
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      # Every TOML file must parse: canopy reads them from main at runtime, so
+      # a syntax error here breaks every install that refreshes the registry.
+      - name: Parse every TOML file
+        run: |
+          python3 - <<'PY'
+          import pathlib, sys, tomllib
+          bad = 0
+          for p in sorted(pathlib.Path('.').rglob('*.toml')):
+              if 'node_modules' in p.parts:
+                  continue
+              try:
+                  tomllib.loads(p.read_text(encoding='utf-8'))
+              except Exception as e:
+                  print(f'::error file={p}::{e}')
+                  bad += 1
+          sys.exit(1 if bad else 0)
+          PY
+
+      - name: Check index, platforms and servers agree
+        run: bash validate_platforms.sh
