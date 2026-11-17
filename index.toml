@@ -87,3 +87,7 @@ binary = "utim"
 [[platforms]]
 name = "muse"
 binary = "muse"
+
+[[platforms]]
+name = "grok"
+binary = "grok"
