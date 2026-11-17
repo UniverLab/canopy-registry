@@ -9,8 +9,38 @@ deprecated_keys = []
 unsupported_keys = ["headers"]
 skills_dir = ".vibe/skills"
 instruction_file = "AGENTS.md"
+# Source: https://docs.mistral.ai/mistral-vibe/terminal/install (checked 2026-11-17)
+docs_url = "https://docs.mistral.ai/mistral-vibe/terminal/install"
 # Paths the harness creates inside a project (checked 2026-09-30): project tools, skills, agents, prompts, hooks (docs.mistral.ai/vibe).
 project_paths = [".vibe/"]
+
+[[install_commands]]
+os = "linux"
+command = "curl -LsSf https://mistral.ai/vibe/install.sh | bash"
+description = "Install Vibe with the official script"
+requires = ["curl", "bash"]
+source_url = "https://github.com/mistralai/mistral-vibe"
+
+[[install_commands]]
+os = "macos"
+command = "curl -LsSf https://mistral.ai/vibe/install.sh | bash"
+description = "Install Vibe with the official script"
+requires = ["curl", "bash"]
+source_url = "https://github.com/mistralai/mistral-vibe"
+
+[[install_commands]]
+os = "windows"
+command = "powershell -ExecutionPolicy ByPass -c \"irm https://astral.sh/uv/install.ps1 | iex\""
+description = "Step 1: install uv"
+requires = ["powershell"]
+source_url = "https://github.com/mistralai/mistral-vibe"
+
+[[install_commands]]
+os = "windows"
+command = "uv tool install --python 3.14 mistral-vibe"
+description = "Step 2: install Vibe with uv"
+requires = ["uv"]
+source_url = "https://github.com/mistralai/mistral-vibe"
 
 [fields_mapping]
 type = "transport"

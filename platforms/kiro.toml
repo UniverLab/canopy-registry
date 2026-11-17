@@ -9,8 +9,28 @@ skills_dir = ".kiro/skills"
 instruction_file = "AGENTS.md"
 # Personal instructions every session loads, home-relative (checked 2026-11-17): https://kiro.dev/docs/steering/
 user_instruction_file = ".kiro/steering/AGENTS.md"
+# Source: https://kiro.dev/docs/getting-started/installation/ (checked 2026-11-17)
+docs_url = "https://kiro.dev/docs/getting-started/installation/"
+# Source: `kiro-cli login --help` on the installed binary (checked 2026-11-17)
+login_command = "kiro-cli login"
+# Source: `kiro-cli login --help` on the installed binary (checked 2026-11-17)
+login_checked_at = "2026-11-17"
 # Paths the harness creates inside a project (checked 2026-09-30): steering/, specs/, agents/, settings/mcp.json (kiro.dev/docs/configuration).
 project_paths = [".kiro/"]
+
+[[install_commands]]
+os = "macos"
+command = "curl -fsSL https://cli.kiro.dev/install | bash"
+description = "Install Kiro CLI with the official script"
+requires = ["curl", "bash"]
+source_url = "https://kiro.dev/docs/getting-started/installation/"
+
+[[install_commands]]
+os = "linux"
+command = "curl -fsSL https://cli.kiro.dev/install | bash"
+description = "Install Kiro CLI with the official script"
+requires = ["curl", "bash"]
+source_url = "https://kiro.dev/docs/cli"
 
 [required_fields]
 type = ["stdio"]

@@ -10,8 +10,42 @@ skills_dir = ".agents/skills"
 instruction_file = "AGENTS.md"
 # Personal instructions every session loads, home-relative (checked 2026-11-17): https://opencode.ai/docs/rules/
 user_instruction_file = ".config/opencode/AGENTS.md"
+# Source: https://opencode.ai/docs/ (checked 2026-11-17)
+docs_url = "https://opencode.ai/docs/"
+# Source: `opencode auth login --help` on the installed binary (checked 2026-11-17)
+login_command = "opencode auth login"
+# Source: `opencode auth login --help` on the installed binary (checked 2026-11-17)
+login_checked_at = "2026-11-17"
 # Paths the harness creates inside a project (checked 2026-09-30): .opencode/ agents, commands, plugins; root config (opencode.ai/docs/config).
 project_paths = [".opencode/", "opencode.json", "opencode.jsonc"]
+
+[[install_commands]]
+os = "linux"
+command = "curl -fsSL https://opencode.ai/v2/install | bash"
+description = "Install OpenCode (v2 beta) with the official script"
+requires = ["curl", "bash"]
+source_url = "https://opencode.ai/docs/"
+
+[[install_commands]]
+os = "macos"
+command = "curl -fsSL https://opencode.ai/v2/install | bash"
+description = "Install OpenCode (v2 beta) with the official script"
+requires = ["curl", "bash"]
+source_url = "https://opencode.ai/docs/"
+
+[[install_commands]]
+os = "linux"
+command = "npm install -g @opencode/cli"
+description = "Install OpenCode from npm"
+requires = ["npm"]
+source_url = "https://opencode.ai/docs/"
+
+[[install_commands]]
+os = "macos"
+command = "npm install -g @opencode/cli"
+description = "Install OpenCode from npm"
+requires = ["npm"]
+source_url = "https://opencode.ai/docs/"
 
 [fields_mapping]
 env = "environment"

@@ -14,10 +14,61 @@ skills_dir = ".claude/skills"
 instruction_file = "AGENTS.md"
 # Personal instructions every session loads, home-relative (checked 2026-11-17): https://code.claude.com/docs/en/memory
 user_instruction_file = ".claude/CLAUDE.md"
+# Source: https://code.claude.com/docs/en/setup (checked 2026-11-17)
+docs_url = "https://code.claude.com/docs/en/setup"
+# Source: https://claude.com/pricing (checked 2026-11-17)
+free_tier = "no"
+# Source: https://claude.com/pricing (checked 2026-11-17)
+free_tier_checked_at = "2026-11-17"
+# Source: https://claude.com/pricing (checked 2026-11-17)
+free_tier_source = "https://claude.com/pricing"
+# Source: https://code.claude.com/docs/en/setup (checked 2026-11-17)
+install_paths = ["~/.local/bin/claude"]
+# Source: https://code.claude.com/docs/en/cli-reference (checked 2026-11-17)
+login_command = "claude auth login"
+# Source: https://code.claude.com/docs/en/cli-reference (checked 2026-11-17)
+login_check_command = "claude auth status"
+# Source: https://code.claude.com/docs/en/cli-reference (checked 2026-11-17)
+login_checked_at = "2026-11-17"
 # Paths the harness creates inside a project (checked 2026-09-30): .claude/ tree, project MCP file, personal instructions (code.claude.com/docs/en/claude-directory).
 project_paths = [".claude/", ".mcp.json", "CLAUDE.local.md"]
 # Files Claude reads INSTEAD of AGENTS.md when present, in order.
 instruction_precedence = ["CLAUDE.md", ".claude/CLAUDE.md", "CLAUDE.local.md"]
+
+[[install_commands]]
+os = "linux"
+command = "curl -fsSL https://claude.ai/install.sh | bash"
+description = "Native installer (recommended)"
+requires = ["curl", "bash"]
+source_url = "https://code.claude.com/docs/en/setup"
+
+[[install_commands]]
+os = "macos"
+command = "curl -fsSL https://claude.ai/install.sh | bash"
+description = "Native installer (recommended)"
+requires = ["curl", "bash"]
+source_url = "https://code.claude.com/docs/en/setup"
+
+[[install_commands]]
+os = "macos"
+command = "brew install --cask claude-code"
+description = "Homebrew cask (stable channel, manual updates)"
+requires = ["brew"]
+source_url = "https://code.claude.com/docs/en/setup"
+
+[[install_commands]]
+os = "windows"
+command = "irm https://claude.ai/install.ps1 | iex"
+description = "Native installer in PowerShell (recommended)"
+requires = ["powershell"]
+source_url = "https://code.claude.com/docs/en/setup"
+
+[[install_commands]]
+os = "windows"
+command = "winget install Anthropic.ClaudeCode"
+description = "WinGet package (manual updates)"
+requires = ["winget"]
+source_url = "https://code.claude.com/docs/en/setup"
 
 [required_fields]
 type = ["stdio", "http"]

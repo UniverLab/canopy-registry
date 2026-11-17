@@ -116,6 +116,15 @@ binary = "my-platform"
 | `user_instruction_file` | Optional. The plain markdown file the harness loads as personal instructions in **every** project, as a path relative to the home directory (e.g. `.claude/CLAUDE.md`). Canopy appends its line only if the file already exists |
 | `project_paths` | Directories (trailing `/`) and root files the harness creates **inside a project**, e.g. `[".kilo/", "kilo.jsonc"]`. Required. Never `.github` or `.config` (shared directories). gitkit's `agentic` .gitignore is built from these |
 | `instruction_precedence` | Optional. Files the harness reads **instead of** `instruction_file` when they exist, in order (e.g. claude: `["CLAUDE.md", ".claude/CLAUDE.md", "CLAUDE.local.md"]`). Canopy amends the first existing one when it writes its protocol into a sandbox |
+| `docs_url` | Optional. The vendor's official getting-started or installation page. Omitted when no official page could be confirmed |
+| `free_tier` | Optional. `"yes"` or `"no"`: whether the vendor offers a free tier usable from the CLI. Yes/no only, never amounts or limits |
+| `free_tier_checked_at` | Optional. `YYYY-MM-DD` date `free_tier` was last verified. Set together with `free_tier` |
+| `free_tier_source` | Optional. Official pricing page `free_tier` was checked against |
+| `install_paths` | Optional. Paths the official installer puts the binary at **outside** a standard `PATH` directory (e.g. `["~/.local/bin/claude"]`). Omitted when the docs do not say |
+| `login_command` | Optional. The official command that starts the interactive login (e.g. `claude auth login`). Omitted when the CLI has no login subcommand |
+| `login_check_command` | Optional. A **non-interactive** command that exits 0 when a session exists (e.g. `claude auth status`). Set only when the official docs or `--help` document that exit behaviour |
+| `login_checked_at` | Optional. `YYYY-MM-DD` date the login fields were last verified. Set whenever `login_command` or `login_check_command` is set |
+| `install_commands` | Optional. Array of `[[install_commands]]` tables, one per OS the vendor documents. Each has `os` (`"linux"`, `"macos"` or `"windows"`), `command` (the exact official install line), `description` (one line), `requires` (executables the command needs in `PATH`; `[]` if none) and `source_url` (the doc page the command came from) |
 | `cli` | CLI strategy definition for headless/interactive execution |
 
 ### CLI fields

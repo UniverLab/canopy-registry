@@ -8,8 +8,41 @@ deprecated_keys = []
 unsupported_keys = ["autoApprove", "disabled", "tools", "headers"]
 skills_dir = ".agents/skills"
 instruction_file = "AGENTS.md"
+# Source: https://kilocode.ai/docs/cli (checked 2026-11-17)
+docs_url = "https://kilocode.ai/docs/cli"
+# Source: https://kilo.ai/pricing (checked 2026-11-17)
+free_tier = "yes"
+# Source: https://kilo.ai/pricing (checked 2026-11-17)
+free_tier_checked_at = "2026-11-17"
+# Source: https://kilo.ai/pricing (checked 2026-11-17)
+free_tier_source = "https://kilo.ai/pricing"
+# Source: `kilo auth login --help` on the installed binary (checked 2026-11-17)
+login_command = "kilo auth login"
+# Source: `kilo auth login --help` on the installed binary (checked 2026-11-17)
+login_checked_at = "2026-11-17"
 # Paths the harness creates inside a project (checked 2026-09-30): .kilo/ and kilo.jsonc since the 2026 rebuild; .kilocode/ kept for older projects (kilo.ai/docs).
 project_paths = [".kilo/", ".kilocode/", "kilo.json", "kilo.jsonc"]
+
+[[install_commands]]
+os = "linux"
+command = "npm install -g @kilocode/cli"
+description = "Install Kilo Code CLI from npm"
+requires = ["npm"]
+source_url = "https://kilocode.ai/docs/cli"
+
+[[install_commands]]
+os = "macos"
+command = "npm install -g @kilocode/cli"
+description = "Install Kilo Code CLI from npm"
+requires = ["npm"]
+source_url = "https://kilocode.ai/docs/cli"
+
+[[install_commands]]
+os = "windows"
+command = "npm install -g @kilocode/cli"
+description = "Install Kilo Code CLI from npm"
+requires = ["npm"]
+source_url = "https://kilocode.ai/docs/cli"
 
 [fields_mapping]
 env = "environment"

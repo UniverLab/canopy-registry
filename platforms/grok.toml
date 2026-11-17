@@ -27,12 +27,40 @@ instruction_file = "AGENTS.md"
 # 01-getting-started.md file table, checked 2026-11-17). Grok also reads
 # ~/.claude/CLAUDE.md while Claude compatibility is on (12-project-rules.md).
 user_instruction_file = ".grok/AGENTS.md"
+# free_tier omitted: the launch post (x.ai/news/grok-build-cli) says paid
+# subscribers only, but a free tier was observed on 2026-11-17 and no official
+# pricing page confirms either way yet.
+# Source: `grok login --help` on the installed binary (checked 2026-11-17)
+login_command = "grok login"
+# Source: `grok login --help` on the installed binary (checked 2026-11-17)
+login_checked_at = "2026-11-17"
 # Grok loads every matching file per directory (AGENTS.md, CLAUDE.md, ...),
 # none replaces another, so no instruction_precedence (12-project-rules.md).
 # Paths the harness creates inside a project (checked 2026-11-17): project
 # config, skills, plugins, agents and hooks under .grok/ (bundled user guide,
 # file table). AGENTS.md is a committed file, not a harness path.
 project_paths = [".grok/"]
+
+[[install_commands]]
+os = "linux"
+command = "curl -fsSL https://x.ai/cli/install.sh | bash"
+description = "Install Grok Build with the official script"
+requires = ["curl", "bash"]
+source_url = "https://x.ai/cli/install.sh"
+
+[[install_commands]]
+os = "macos"
+command = "curl -fsSL https://x.ai/cli/install.sh | bash"
+description = "Install Grok Build with the official script"
+requires = ["curl", "bash"]
+source_url = "https://x.ai/cli/install.sh"
+
+[[install_commands]]
+os = "windows"
+command = "curl -fsSL https://x.ai/cli/install.sh | bash"
+description = "Same script, run in Git Bash or MSYS2"
+requires = ["curl", "bash"]
+source_url = "https://x.ai/cli/install.sh"
 
 [cli]
 binary = "grok"

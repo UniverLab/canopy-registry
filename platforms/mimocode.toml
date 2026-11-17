@@ -9,8 +9,31 @@ skills_dir = ".agents/skills"
 instruction_file = "AGENTS.md"
 # Personal instructions every session loads, home-relative (checked 2026-11-17): https://mimo.xiaomi.com/mimocode/rules
 user_instruction_file = ".config/mimocode/AGENTS.md"
+# Source: https://mimo.xiaomi.com/mimocode/install (checked 2026-11-17)
+docs_url = "https://mimo.xiaomi.com/mimocode/install"
 # Paths the harness creates inside a project (checked 2026-09-30): project config and .mimocode/ tree (XiaomiMiMo/MiMo-Code README).
 project_paths = [".mimocode/", "mimocode.json", "mimocode.jsonc"]
+
+[[install_commands]]
+os = "linux"
+command = "curl -fsSL https://mimo.xiaomi.com/install | bash"
+description = "Install MiMo Code with the official script"
+requires = ["curl", "bash"]
+source_url = "https://mimo.xiaomi.com/mimocode/install"
+
+[[install_commands]]
+os = "macos"
+command = "curl -fsSL https://mimo.xiaomi.com/install | bash"
+description = "Install MiMo Code with the official script"
+requires = ["curl", "bash"]
+source_url = "https://mimo.xiaomi.com/mimocode/install"
+
+[[install_commands]]
+os = "windows"
+command = "powershell -ep Bypass -c \"irm https://mimo.xiaomi.com/install.ps1 | iex\""
+description = "Install MiMo Code in PowerShell"
+requires = ["powershell"]
+source_url = "https://mimo.xiaomi.com/mimocode/install"
 
 [fields_mapping]
 env = "environment"
