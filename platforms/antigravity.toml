@@ -9,8 +9,32 @@ skills_dir = ".agents/skills"
 instruction_file = "GEMINI.md"
 # Personal instructions every session loads, home-relative (checked 2026-11-17): https://antigravity.google/docs/rules
 user_instruction_file = ".gemini/GEMINI.md"
+# Source: https://antigravity.google/docs/getting-started?tab=cli (checked 2026-11-17)
+docs_url = "https://antigravity.google/docs/getting-started?tab=cli"
+# Source: https://antigravity.google/pricing (checked 2026-11-17)
+free_tier = "yes"
+# Source: https://antigravity.google/pricing (checked 2026-11-17)
+free_tier_checked_at = "2026-11-17"
+# Source: https://antigravity.google/pricing (checked 2026-11-17)
+free_tier_source = "https://antigravity.google/pricing"
+# Source: https://antigravity.google/docs/getting-started?tab=cli (checked 2026-11-17)
+install_paths = ["~/.local/bin/agy"]
 # Paths the harness creates inside a project (checked 2026-09-30): rules, workflows and skills live in .agents/ (antigravity.google/docs/rules).
 project_paths = [".agents/"]
+
+[[install_commands]]
+os = "linux"
+command = "curl -fsSL https://antigravity.google/cli/install.sh | bash"
+description = "Install the agy CLI with the official script"
+requires = ["curl", "bash"]
+source_url = "https://antigravity.google/docs/getting-started?tab=cli"
+
+[[install_commands]]
+os = "macos"
+command = "curl -fsSL https://antigravity.google/cli/install.sh | bash"
+description = "Install the agy CLI with the official script"
+requires = ["curl", "bash"]
+source_url = "https://antigravity.google/docs/getting-started?tab=cli"
 
 [fields_mapping]
 env = "environment"

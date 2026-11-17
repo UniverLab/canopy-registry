@@ -7,8 +7,28 @@ deprecated_keys = []
 unsupported_keys = ["autoApprove", "disabled", "tools", "headers"]
 skills_dir = ".agents/skills"
 instruction_file = ".continue/rules"
+# Source: https://docs.continue.dev/cli/quickstart (checked 2026-11-17)
+docs_url = "https://docs.continue.dev/cli/quickstart"
+# Source: https://docs.continue.dev/cli/quickstart (checked 2026-11-17)
+login_command = "cn login"
+# Source: https://docs.continue.dev/cli/quickstart (checked 2026-11-17)
+login_checked_at = "2026-11-17"
 # Paths the harness creates inside a project (checked 2026-09-30): rules/, configs/, agents/ (docs.continue.dev).
 project_paths = [".continue/"]
+
+[[install_commands]]
+os = "linux"
+command = "curl -fsSL https://raw.githubusercontent.com/continuedev/continue/main/extensions/cli/scripts/install.sh | bash"
+description = "Install Continue CLI with the official script"
+requires = ["curl", "bash"]
+source_url = "https://docs.continue.dev/cli/quickstart"
+
+[[install_commands]]
+os = "macos"
+command = "curl -fsSL https://raw.githubusercontent.com/continuedev/continue/main/extensions/cli/scripts/install.sh | bash"
+description = "Install Continue CLI with the official script"
+requires = ["curl", "bash"]
+source_url = "https://docs.continue.dev/cli/quickstart"
 
 [fields_mapping]
 env = "environment"

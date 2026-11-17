@@ -11,10 +11,71 @@ skills_dir = ".agents/skills"
 instruction_file = "AGENTS.md"
 # Personal instructions every session loads, home-relative (checked 2026-11-17): https://developers.openai.com/codex/guides/agents-md
 user_instruction_file = ".codex/AGENTS.md"
+# Source: https://github.com/openai/codex (checked 2026-11-17)
+docs_url = "https://github.com/openai/codex"
+# Source: https://developers.openai.com/codex/pricing (checked 2026-11-17)
+free_tier = "no"
+# Source: https://developers.openai.com/codex/pricing (checked 2026-11-17)
+free_tier_checked_at = "2026-11-17"
+# Source: https://developers.openai.com/codex/pricing (checked 2026-11-17)
+free_tier_source = "https://developers.openai.com/codex/pricing"
+# Source: `codex login --help` on the installed binary (checked 2026-11-17)
+login_command = "codex login"
+# Source: `codex login --help` on the installed binary (checked 2026-11-17)
+login_checked_at = "2026-11-17"
 # Paths the harness creates inside a project (checked 2026-09-30): project config.toml (developers.openai.com/codex/config-basic).
 project_paths = [".codex/"]
 # Codex prefers AGENTS.override.md over AGENTS.md at the same level.
 instruction_precedence = ["AGENTS.override.md"]
+
+[[install_commands]]
+os = "linux"
+command = "curl -fsSL https://chatgpt.com/codex/install.sh | sh"
+description = "Standalone installer"
+requires = ["curl", "sh"]
+source_url = "https://github.com/openai/codex"
+
+[[install_commands]]
+os = "macos"
+command = "curl -fsSL https://chatgpt.com/codex/install.sh | sh"
+description = "Standalone installer"
+requires = ["curl", "sh"]
+source_url = "https://github.com/openai/codex"
+
+[[install_commands]]
+os = "macos"
+command = "brew install --cask codex"
+description = "Homebrew cask"
+requires = ["brew"]
+source_url = "https://github.com/openai/codex"
+
+[[install_commands]]
+os = "windows"
+command = "powershell -ExecutionPolicy ByPass -c \"irm https://chatgpt.com/codex/install.ps1 | iex\""
+description = "Standalone installer in PowerShell"
+requires = ["powershell"]
+source_url = "https://github.com/openai/codex"
+
+[[install_commands]]
+os = "linux"
+command = "npm install -g @openai/codex"
+description = "Install Codex CLI from npm"
+requires = ["npm"]
+source_url = "https://github.com/openai/codex"
+
+[[install_commands]]
+os = "macos"
+command = "npm install -g @openai/codex"
+description = "Install Codex CLI from npm"
+requires = ["npm"]
+source_url = "https://github.com/openai/codex"
+
+[[install_commands]]
+os = "windows"
+command = "npm install -g @openai/codex"
+description = "Install Codex CLI from npm"
+requires = ["npm"]
+source_url = "https://github.com/openai/codex"
 
 [required_fields]
 type = ["stdio"]

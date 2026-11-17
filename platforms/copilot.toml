@@ -9,8 +9,78 @@ skills_dir = ".agents/skills"
 instruction_file = ".github/copilot-instructions.md"
 # Personal instructions every session loads, home-relative (checked 2026-11-17): https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-custom-instructions
 user_instruction_file = ".copilot/copilot-instructions.md"
+# Source: https://docs.github.com/en/copilot/how-tos/copilot-cli/install-copilot-cli (checked 2026-11-17)
+docs_url = "https://docs.github.com/en/copilot/how-tos/copilot-cli/install-copilot-cli"
+# Source: https://github.com/features/copilot/plans (checked 2026-11-17)
+free_tier = "yes"
+# Source: https://github.com/features/copilot/plans (checked 2026-11-17)
+free_tier_checked_at = "2026-11-17"
+# Source: https://github.com/features/copilot/plans (checked 2026-11-17)
+free_tier_source = "https://github.com/features/copilot/plans"
+# Source: https://docs.github.com/en/copilot/how-tos/copilot-cli/install-copilot-cli (checked 2026-11-17)
+install_paths = ["~/.local/bin/copilot"]
+# Source: `copilot login --help` on the installed binary (checked 2026-11-17)
+login_command = "copilot login"
+# Source: `copilot login --help` on the installed binary (checked 2026-11-17)
+login_checked_at = "2026-11-17"
 # Paths the harness creates inside a project (checked 2026-09-30): project config; its instructions live under .github/, which is never a project path.
 project_paths = [".copilot/"]
+
+[[install_commands]]
+os = "linux"
+command = "npm install -g @github/copilot"
+description = "Install Copilot CLI from npm (Node.js 22+)"
+requires = ["npm"]
+source_url = "https://docs.github.com/en/copilot/how-tos/copilot-cli/install-copilot-cli"
+
+[[install_commands]]
+os = "macos"
+command = "npm install -g @github/copilot"
+description = "Install Copilot CLI from npm (Node.js 22+)"
+requires = ["npm"]
+source_url = "https://docs.github.com/en/copilot/how-tos/copilot-cli/install-copilot-cli"
+
+[[install_commands]]
+os = "windows"
+command = "npm install -g @github/copilot"
+description = "Install Copilot CLI from npm (Node.js 22+)"
+requires = ["npm"]
+source_url = "https://docs.github.com/en/copilot/how-tos/copilot-cli/install-copilot-cli"
+
+[[install_commands]]
+os = "linux"
+command = "brew install --cask copilot-cli"
+description = "Homebrew cask"
+requires = ["brew"]
+source_url = "https://docs.github.com/en/copilot/how-tos/copilot-cli/install-copilot-cli"
+
+[[install_commands]]
+os = "macos"
+command = "brew install --cask copilot-cli"
+description = "Homebrew cask"
+requires = ["brew"]
+source_url = "https://docs.github.com/en/copilot/how-tos/copilot-cli/install-copilot-cli"
+
+[[install_commands]]
+os = "linux"
+command = "curl -fsSL https://gh.io/copilot-install | bash"
+description = "Install script (user prefix ~/.local)"
+requires = ["curl", "bash"]
+source_url = "https://docs.github.com/en/copilot/how-tos/copilot-cli/install-copilot-cli"
+
+[[install_commands]]
+os = "macos"
+command = "curl -fsSL https://gh.io/copilot-install | bash"
+description = "Install script (user prefix ~/.local)"
+requires = ["curl", "bash"]
+source_url = "https://docs.github.com/en/copilot/how-tos/copilot-cli/install-copilot-cli"
+
+[[install_commands]]
+os = "windows"
+command = "winget install GitHub.Copilot"
+description = "WinGet package"
+requires = ["winget"]
+source_url = "https://docs.github.com/en/copilot/how-tos/copilot-cli/install-copilot-cli"
 
 [required_fields]
 type = ["stdio", "local"]

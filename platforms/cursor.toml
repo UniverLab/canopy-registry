@@ -7,11 +7,40 @@ deprecated_keys = []
 unsupported_keys = ["autoApprove", "disabled", "tools", "headers"]
 skills_dir = ".agents/skills"
 instruction_file = ".cursor/rules"
+# Source: https://cursor.com/docs/cli/installation (checked 2026-11-17)
+docs_url = "https://cursor.com/docs/cli/installation"
+# Source: https://cursor.com/docs/cli/installation (checked 2026-11-17)
+install_paths = ["~/.local/bin/agent"]
+# Source: `agent login --help` on the installed binary (checked 2026-11-17)
+login_command = "agent login"
+# Source: `agent login --help` on the installed binary (checked 2026-11-17)
+login_checked_at = "2026-11-17"
 # Paths the harness creates inside a project (checked 2026-09-30): rules/ plus the two ignore files.
 project_paths = [".cursor/", ".cursorignore", ".cursorindexingignore"]
 
 # Cursor drops every server whose type is "local" ("No MCP servers configured", checked 2026-10-29),
 # and reads env vars from `env`, so neither is remapped.
+[[install_commands]]
+os = "linux"
+command = "curl https://cursor.com/install -fsS | bash"
+description = "Install Cursor CLI with the official script"
+requires = ["curl", "bash"]
+source_url = "https://cursor.com/docs/cli/installation"
+
+[[install_commands]]
+os = "macos"
+command = "curl https://cursor.com/install -fsS | bash"
+description = "Install Cursor CLI with the official script"
+requires = ["curl", "bash"]
+source_url = "https://cursor.com/docs/cli/installation"
+
+[[install_commands]]
+os = "windows"
+command = "irm 'https://cursor.com/install?win32=true' | iex"
+description = "Install Cursor CLI in PowerShell"
+requires = ["powershell"]
+source_url = "https://cursor.com/docs/cli/installation"
+
 [required_fields]
 type = ["stdio"]
 

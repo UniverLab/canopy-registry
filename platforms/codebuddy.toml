@@ -9,8 +9,45 @@ skills_dir = ".agents/skills"
 instruction_file = "AGENTS.md"
 # Personal instructions every session loads, home-relative (checked 2026-11-17): https://www.codebuddy.ai/docs/cli/memory
 user_instruction_file = ".codebuddy/CODEBUDDY.md"
+# Source: https://www.codebuddy.ai/docs/cli/installation (checked 2026-11-17)
+docs_url = "https://www.codebuddy.ai/docs/cli/installation"
 # Paths the harness creates inside a project (checked 2026-09-30): settings.json, settings.local.json, rules/ (codebuddy.ai/docs/cli/settings).
 project_paths = [".codebuddy/"]
+
+[[install_commands]]
+os = "linux"
+command = "npm install -g @tencent-ai/codebuddy-code"
+description = "Install CodeBuddy Code from npm (Node.js 18.20+)"
+requires = ["npm"]
+source_url = "https://www.codebuddy.ai/docs/cli/installation"
+
+[[install_commands]]
+os = "macos"
+command = "npm install -g @tencent-ai/codebuddy-code"
+description = "Install CodeBuddy Code from npm (Node.js 18.20+)"
+requires = ["npm"]
+source_url = "https://www.codebuddy.ai/docs/cli/installation"
+
+[[install_commands]]
+os = "windows"
+command = "npm install -g @tencent-ai/codebuddy-code"
+description = "Install CodeBuddy Code from npm (Node.js 18.20+)"
+requires = ["npm"]
+source_url = "https://www.codebuddy.ai/docs/cli/installation"
+
+[[install_commands]]
+os = "linux"
+command = "brew install Tencent-CodeBuddy/tap/codebuddy-code"
+description = "Install CodeBuddy Code with Homebrew (no Node.js needed)"
+requires = ["brew"]
+source_url = "https://www.codebuddy.ai/docs/cli/installation"
+
+[[install_commands]]
+os = "macos"
+command = "brew install Tencent-CodeBuddy/tap/codebuddy-code"
+description = "Install CodeBuddy Code with Homebrew (no Node.js needed)"
+requires = ["brew"]
+source_url = "https://www.codebuddy.ai/docs/cli/installation"
 
 [required_fields]
 type = ["stdio", "sse", "http"]

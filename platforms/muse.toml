@@ -11,12 +11,25 @@ unsupported_keys = ["autoApprove", "disabled", "tools", "type"]
 skills_dir = ".config/muse/skills"
 # `muse init` scaffolds this file as project rules (verified 2026-10-26).
 instruction_file = "AGENTS.md"
+# Source: https://developer.meta.com/ai/products/muse-code/ (checked 2026-11-17)
+docs_url = "https://developer.meta.com/ai/products/muse-code/"
+# Source: `muse login --help` on the installed binary (checked 2026-11-17)
+login_command = "muse login"
+# Source: `muse login --help` on the installed binary (checked 2026-11-17)
+login_checked_at = "2026-11-17"
 # Paths the harness creates inside a project (checked 2026-10-26): session
 # worktree state under .muse/worktrees/. `muse init` also writes AGENTS.md,
 # which is committed, not ignored. Project skills are read from
 # .agents/skills/ but only user-scope install exists, so .agents/ is not
 # harness-created.
 project_paths = [".muse/"]
+
+[[install_commands]]
+os = "macos"
+command = "curl -fsSL https://dev.meta.ai/install.sh | bash"
+description = "Install Muse Code with the official script"
+requires = ["curl", "bash"]
+source_url = "https://developer.meta.com/ai/products/muse-code/"
 
 [required_fields]
 transport = ["stdio"]
