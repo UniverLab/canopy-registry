@@ -36,8 +36,8 @@ project_paths = [".grok/"]
 
 [cli]
 binary = "grok"
-# Neutral silver for the TUI: xAI's mark is monochrome (orchestrator's choice).
-accent_color = [200, 200, 210]
+# Teal from Grok's own UI accents (#3A95AB, chosen by the owner 2026-11-17).
+accent_color = [58, 149, 171]
 # `-p` (--single) takes the prompt as its value, so it must sit directly before
 # {{prompt}}. canopy prepends headless_mode to every templated argv, so the
 # permission bypass goes here and `-p` lives in the template (same split as
