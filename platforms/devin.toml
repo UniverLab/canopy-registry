@@ -7,6 +7,8 @@ deprecated_keys = []
 unsupported_keys = ["autoApprove", "disabled", "tools", "headers"]
 skills_dir = ".agents/skills"
 instruction_file = "AGENTS.md"
+# Personal instructions every session loads, home-relative (checked 2026-11-17): https://docs.devin.ai/cli/extensibility/rules. Linux/macOS path; Windows is %APPDATA%\devin\AGENTS.md.
+user_instruction_file = ".config/devin/AGENTS.md"
 # Paths the harness creates inside a project (checked 2026-09-30): config.json, config.local.json, rules/, skills/, agents/ (docs.devin.ai/cli/extensibility).
 project_paths = [".devin/"]
 
