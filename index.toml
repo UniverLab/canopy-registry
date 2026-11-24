@@ -13,10 +13,6 @@ name = "copilot"
 binary = "copilot"
 
 [[platforms]]
-name = "gemini"
-binary = "gemini"
-
-[[platforms]]
 name = "claude"
 binary = "claude"
 
